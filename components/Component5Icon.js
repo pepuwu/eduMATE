@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   component5Icon: {
     position: "absolute",
     top: 107,
-    left: "120px",
+    left: 120,
     width: 194,
     height: 194,
   },

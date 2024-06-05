@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   iconPosition: {
-    left: "59px",
+    left: 59,
     position: "absolute",
   },
   edumateFlexBox: {

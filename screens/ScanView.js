@@ -184,13 +184,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   escanaElQr: {
-    top: "580px",
+    top: 580,
     fontSize: FontSize.size_6xl,
     fontFamily: FontFamily.poppinsBold,
     fontWeight: "700",
     textAlign: "left",
     color: Color.colorBlack,
-    left: "135px",
+    left: 135,
   },
   diegoteMaradona: {
     top: 18,
