@@ -6,10 +6,26 @@ import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
 import Property1DefaultImage2 from "../components/Property1DefaultImage2";
 import { Color, FontSize, FontFamily, Border } from "../GlobalStyles";
+import { CameraView } from "expo-camera";
+import { VideoQuality } from "expo-camera/build/legacy/Camera.types";
 
 const ScanView = () => {
   const navigation = useNavigation();
 
+  const handlepress = () => {
+    CameraView.launchScanner({
+      isHighlightingEnabled: true,
+      isGuidanceEnabled: false,
+      VideoStabilization: "off",
+      VideoQuality: "1080p",
+      barCodeTypes: ["qr"],
+    }).then(
+      CameraView.onModernBarcodeScanned((data) => {
+        console.log(data);
+        CameraView.dismissScanner();
+      })
+    );
+  };
   return (
     <View style={styles.scanView}>
       <Image
@@ -67,16 +83,21 @@ const ScanView = () => {
           source={require("../assets/qr1.png")}
         />
       </Pressable>
-      <Image
+      <Pressable
         style={[styles.scanViewItem, styles.qrIcon1Position]}
-        contentFit="cover"
-        source={require("../assets/ellipse-7.png")}
-      />
-      <Image
-        style={[styles.qrIcon1, styles.qrIcon1Position]}
-        contentFit="cover"
-        source={require("../assets/qr2.png")}
-      />
+        onPress={handlepress}
+      >
+        <Image
+          style={[styles.scanViewItem, styles.qrIcon1Position]}
+          contentFit="cover"
+          source={require("../assets/ellipse-7.png")}
+        />
+        <Image
+          style={[styles.qrIcon1, styles.qrIcon1Position]}
+          contentFit="cover"
+          source={require("../assets/qr2.png")}
+        />
+      </Pressable>
       <Text style={[styles.escanaElQr, styles.escanaElQrFlexBox]}>
         Escanéa el QR
       </Text>

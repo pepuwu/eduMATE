@@ -69,12 +69,12 @@ const Perfil1 = () => {
         </Text>
         <Text
           style={[styles.diegoteMaradona, styles.textTypo]}
-        >{`Diegote Maradona `}</Text>
+        >{`User User `}</Text>
         <Text style={[styles.nombre, styles.emailTypo]}>{`Nombre  `}</Text>
         <Text style={[styles.legajo, styles.emailTypo]}>Legajo</Text>
         <Text style={[styles.text, styles.textTypo]}>1234567</Text>
         <Text style={[styles.eldiegouadeeduar, styles.textTypo]}>
-          eldiego@uade.edu.ar
+          user@uade.edu.ar
         </Text>
         <Text style={[styles.email, styles.emailTypo]}>Email</Text>
       </View>
