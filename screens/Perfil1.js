@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
     borderRadius: Border.br_11xl,
     backgroundColor: Color.colorGray_200,
     width: 349,
+    left: "20px"
   },
   tecnicaturaUniversitariaEn: {
     top: 345,

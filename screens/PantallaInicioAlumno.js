@@ -57,16 +57,7 @@ const PantallaInicioAlumno = () => {
           property1DefaultIconHeight={60}
         />
       </Pressable>
-      <Image
-        style={styles.pantallaInicioAlumnoChild}
-        contentFit="cover"
-        source={require("../assets/ellipse-71.png")}
-      />
-      <Image
-        style={[styles.qrIcon, styles.iconPosition]}
-        contentFit="cover"
-        source={require("../assets/qr3.png")}
-      />
+
       <View style={styles.pantallaInicioAlumnoItem} />
       <Image
         style={styles.imageRemovebgPreview23}
@@ -76,7 +67,7 @@ const PantallaInicioAlumno = () => {
       <Image
         style={[styles.removal1Icon, styles.iconPosition]}
         contentFit="cover"
-        source={require("../assets/removal-1.png")}
+        source={require("../assets/component-5.png")}
       />
       <Text style={[styles.bienvenidoDiegote, styles.edumateFlexBox]}>
         <Text style={styles.bienvenido}>{`¡Bienvenido, `}</Text>
@@ -96,7 +87,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   iconPosition: {
-    left: 48,
+    left: "59px",
     position: "absolute",
   },
   edumateFlexBox: {
