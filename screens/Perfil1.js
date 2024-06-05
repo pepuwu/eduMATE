@@ -1,12 +1,6 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  Pressable,
-} from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import Component5Icon from "../components/Component5Icon";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
@@ -22,17 +16,6 @@ const Perfil1 = () => {
         style={[styles.image17Icon, styles.perfilLayout]}
         contentFit="cover"
         source={require("../assets/image-18.png")}
-      />
-      <View style={styles.perfilChild} />
-      <ImageBackground
-        style={styles.imageRemovebgPreview23}
-        resizeMode="cover"
-        source={require("../assets/imageremovebgpreview-2-3.png")}
-      />
-      <Image
-        style={styles.maskGroupIcon}
-        contentFit="cover"
-        source={require("../assets/mask-group.png")}
       />
       <Component5Icon />
       <Pressable
@@ -76,16 +59,6 @@ const Perfil1 = () => {
           property1DefaultIconHeight={60}
         />
       </Pressable>
-
-      <Image
-        style={styles.qrIcon}
-        contentFit="cover"
-        source={require("../assets/qr.png")}
-      />
-      <Text style={styles.edumate}>
-        <Text style={styles.edu}>edu</Text>
-        <Text style={styles.mate}>MATE</Text>
-      </Text>
       <View style={[styles.rectangleParent, styles.frameChildLayout]}>
         <View style={[styles.frameChild, styles.frameChildLayout]} />
         <Text style={styles.tecnicaturaUniversitariaEn}>
@@ -94,16 +67,12 @@ const Perfil1 = () => {
         <Text style={[styles.misCarreras1, styles.misCarreras1Typo]}>
           Mis Carreras(1)
         </Text>
-        <Text style={[styles.totalDeMaterias, styles.misCarreras1Typo]}>
-          Total de materias aprobadas
-        </Text>
         <Text
           style={[styles.diegoteMaradona, styles.textTypo]}
         >{`Diegote Maradona `}</Text>
         <Text style={[styles.nombre, styles.emailTypo]}>{`Nombre  `}</Text>
         <Text style={[styles.legajo, styles.emailTypo]}>Legajo</Text>
         <Text style={[styles.text, styles.textTypo]}>1234567</Text>
-        <Text style={styles.text1}>10</Text>
         <Text style={[styles.eldiegouadeeduar, styles.textTypo]}>
           eldiego@uade.edu.ar
         </Text>
@@ -217,7 +186,7 @@ const styles = StyleSheet.create({
     left: 20,
   },
   tecnicaturaUniversitariaEn: {
-    top: 345,
+    top: 335,
     width: 311,
     textAlign: "left",
     color: Color.colorBlack,
@@ -241,13 +210,13 @@ const styles = StyleSheet.create({
     width: 213,
   },
   nombre: {
-    top: 6,
+    top: 25,
     display: "flex",
     alignItems: "center",
     width: 112,
   },
   legajo: {
-    top: 84,
+    top: 94,
     width: 92,
   },
   text: {
@@ -256,7 +225,7 @@ const styles = StyleSheet.create({
   },
   text1: {
     top: 270,
-    width: 23,
+    width: 50,
     height: 30,
     fontSize: FontSize.size_6xl,
     textAlign: "left",
@@ -270,7 +239,7 @@ const styles = StyleSheet.create({
     width: 244,
   },
   email: {
-    top: 163,
+    top: 170,
     width: 72,
   },
   rectangleParent: {

@@ -47,7 +47,7 @@ const DetalleNotificacion1 = () => {
       />
       <Text style={styles.cmoEstuvoLa}>¿Cómo estuvo la clase?</Text>
       <Text style={[styles.cmoEvaluarasAl, styles.del1AlTypo]}>
-        ¿Cómo evaluarías al  docente en la clase de hoy?
+        ¿Cómo evaluarías al docente en la clase de hoy?
       </Text>
       <Text
         style={[styles.del1Al, styles.del1AlTypo]}

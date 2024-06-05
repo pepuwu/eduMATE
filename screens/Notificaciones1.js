@@ -1,13 +1,6 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  Pressable,
-} from "react-native";
-import { Button as RNPButton } from "react-native-paper";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
@@ -66,7 +59,6 @@ const Notificaciones1 = () => {
           source={require("../assets/qr.png")}
         />
       </Pressable>
-      <View style={styles.notificacionesChild} />
       <Button1
         buttonPosition="absolute"
         buttonWidth="unset"
@@ -75,33 +67,13 @@ const Notificaciones1 = () => {
         buttonHeight="unset"
         onButtonPress={() => navigation.replace("DetalleNotificacion1")}
       />
-      <ImageBackground
-        style={styles.imageRemovebgPreview23}
-        resizeMode="cover"
-        source={require("../assets/imageremovebgpreview-2-3.png")}
-      />
-      <Image
-        style={styles.maskGroupIcon}
-        contentFit="cover"
-        source={require("../assets/mask-group.png")}
-      />
       <View style={styles.card}>
         <View style={[styles.frame, styles.frameFlexBox]}>
           <Text style={[styles.cmoEstuvoSu, styles.cmoEstuvoSuFlexBox]}>
             ¿CÓMO ESTUVO SU CLASE?
           </Text>
-        </View>
-        <View style={[styles.frame1, styles.frameFlexBox]}>
-          <Text
-            style={[
-              styles.completaLaEncuestaSusContainer,
-              styles.cmoEstuvoSuFlexBox,
-            ]}
-          >
-            <Text style={styles.cmoEstuvoSuTypo}>COMPLETA LA ENCUESTA:</Text>
-            <Text style={styles.susRespuestasNos}>
-              Sus respuestas nos ayudan a mejorar las clases.
-            </Text>
+          <Text style={[styles.cmoEstuvoSu, styles.cmoEstuvoSuFlexBox]}>
+            RESPONDE LA ENCUESTA {"->"}
           </Text>
         </View>
       </View>
@@ -126,12 +98,12 @@ const styles = StyleSheet.create({
   },
   frameFlexBox: {
     justifyContent: "center",
-    alignItems: "flex-end",
+    alignItems: "center",
     position: "absolute",
     overflow: "hidden",
   },
   cmoEstuvoSuFlexBox: {
-    textAlign: "left",
+    textAlign: "center",
     color: Color.colorBlack,
   },
   image19Icon: {
@@ -182,9 +154,8 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
   frame: {
-    top: 9,
-    left: 68,
-    width: 217,
+    top: 35,
+    width: "100%",
   },
   cmoEstuvoSuTypo: {
     fontFamily: FontFamily.urbanistBold,
@@ -208,7 +179,7 @@ const styles = StyleSheet.create({
     left: 23,
     borderRadius: Border.br_3xl,
     backgroundColor: Color.colorGainsboro_200,
-    width: 354,
+    width: 384,
     height: 118,
     position: "absolute",
   },

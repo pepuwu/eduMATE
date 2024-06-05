@@ -22,22 +22,10 @@ const ScanView = () => {
         contentFit="cover"
         source={require("../assets/image-18.png")}
       />
-      <View style={styles.scanViewChild} />
-      <Image
-        style={styles.imageRemovebgPreview23}
-        contentFit="cover"
-        source={require("../assets/imageremovebgpreview-2-3.png")}
-      />
       <Pressable
         style={styles.maskGroup}
         onPress={() => navigation.replace("PantallaInicioAlumno")}
-      >
-        <Image
-          style={styles.iconLayout}
-          contentFit="cover"
-          source={require("../assets/mask-group.png")}
-        />
-      </Pressable>
+      ></Pressable>
       <Pressable
         onPress={() => {
           navigation.replace("PantallaInicioAlumno");
@@ -93,9 +81,7 @@ const ScanView = () => {
         Escanéa el QR
       </Text>
       <View style={styles.datosUser}>
-        <Text style={[styles.diegoteMaradona, styles.escanaElQrFlexBox]}>
-          Diegote Maradona
-        </Text>
+        <Text style={[styles.diegoteMaradona]}>User UserTest</Text>
         <Text style={[styles.legajo1234567Dni, styles.escanaElQrFlexBox]}>
           Legajo 1234567 DNI 3123
         </Text>
@@ -193,8 +179,8 @@ const styles = StyleSheet.create({
     left: 135,
   },
   diegoteMaradona: {
-    top: 18,
-    left: 91,
+    top: 12,
+    left: 112,
     fontSize: FontSize.size_3xl,
     fontFamily: FontFamily.poppinsBold,
     fontWeight: "700",
@@ -210,7 +196,7 @@ const styles = StyleSheet.create({
   },
   datosUser: {
     top: 102,
-    left: 14,
+    left: 35,
     borderRadius: Border.br_mini,
     backgroundColor: Color.colorGainsboro_300,
     width: 365,

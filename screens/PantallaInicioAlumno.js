@@ -58,12 +58,6 @@ const PantallaInicioAlumno = () => {
         />
       </Pressable>
 
-      <View style={styles.pantallaInicioAlumnoItem} />
-      <Image
-        style={styles.imageRemovebgPreview23}
-        contentFit="cover"
-        source={require("../assets/imageremovebgpreview-2-3.png")}
-      />
       <Image
         style={[styles.removal1Icon, styles.iconPosition]}
         contentFit="cover"
