@@ -1,6 +1,12 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, View, ImageBackground, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  Text,
+  Pressable,
+} from "react-native";
 import { Button as RNPButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import Property1DefaultImage from "../components/Property1DefaultImage";
@@ -19,35 +25,47 @@ const Notificaciones1 = () => {
         contentFit="cover"
         source={require("../assets/image-18.png")}
       />
-      <Property1DefaultImage
-        property1DefaultImageProp={require("../assets/home.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={38}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage1
-        property1DefaultImage1Pro={require("../assets/notify.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={216}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage2
-        property1DefaultImage2Pro={require("../assets/perfil.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={305}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Image
-        style={styles.qrIcon}
-        contentFit="cover"
-        source={require("../assets/qr5.png")}
-      />
+      <Pressable
+        onPress={() => {
+          navigation.replace("PantallaInicioAlumno");
+        }}
+      >
+        <Property1DefaultImage
+          property1DefaultImageProp={require("../assets/home.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={20}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable>
+        <Property1DefaultImage1
+          property1DefaultImage1Pro={require("../assets/notify.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={240}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("Perfil1")}>
+        <Property1DefaultImage2
+          property1DefaultImage2Pro={require("../assets/perfil.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={350}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("ScanView")}>
+        <Image
+          style={styles.qrIcon}
+          contentFit="cover"
+          source={require("../assets/qr.png")}
+        />
+      </Pressable>
       <View style={styles.notificacionesChild} />
       <Button1
         buttonPosition="absolute"
@@ -55,7 +73,7 @@ const Notificaciones1 = () => {
         buttonTop={158}
         buttonLeft={78}
         buttonHeight="unset"
-        onButtonPress={() => navigation.navigate("DetalleNotificacion1")}
+        onButtonPress={() => navigation.replace("DetalleNotificacion1")}
       />
       <ImageBackground
         style={styles.imageRemovebgPreview23}

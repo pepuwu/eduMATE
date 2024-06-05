@@ -17,12 +17,12 @@ const PantallaInicioAlumno = () => {
         source={require("../assets/image-18.png")}
       />
       <Pressable
-        onPress={() => {
-          navigation.navigate("PantallaInicioAlumno");
-        }}
+      // onPress={() => {
+      //   navigation.replace("PantallaInicioAlumno");
+      // }}
       >
         <Property1DefaultImage
-          property1DefaultImageProp={require("../assets/home.png")}
+          property1DefaultImageProp={require("../assets/home1.png")}
           property1DefaultIconPosition="absolute"
           property1DefaultIconTop={773}
           property1DefaultIconLeft={20}
@@ -30,14 +30,14 @@ const PantallaInicioAlumno = () => {
           property1DefaultIconHeight={60}
         />
       </Pressable>
-      <Pressable onPress={() => navigation.navigate("CARGA")}>
+      <Pressable onPress={() => navigation.replace("ScanView")}>
         <Image
           style={styles.qrIcon1}
           contentFit="cover"
           source={require("../assets/qr.png")}
         />
       </Pressable>
-      <Pressable onPress={() => navigation.navigate("Notificaciones1")}>
+      <Pressable onPress={() => navigation.replace("Notificaciones1")}>
         <Property1DefaultImage1
           property1DefaultImage1Pro={require("../assets/notify1.png")}
           property1DefaultIconPosition="absolute"
@@ -47,7 +47,7 @@ const PantallaInicioAlumno = () => {
           property1DefaultIconHeight={60}
         />
       </Pressable>
-      <Pressable onPress={() => navigation.navigate("Perfil1")}>
+      <Pressable onPress={() => navigation.replace("Perfil1")}>
         <Property1DefaultImage2
           property1DefaultImage2Pro={require("../assets/perfil.png")}
           property1DefaultIconPosition="absolute"

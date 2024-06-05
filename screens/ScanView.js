@@ -30,7 +30,7 @@ const ScanView = () => {
       />
       <Pressable
         style={styles.maskGroup}
-        onPress={() => navigation.navigate("PantallaInicioAlumno")}
+        onPress={() => navigation.replace("PantallaInicioAlumno")}
       >
         <Image
           style={styles.iconLayout}
@@ -38,35 +38,47 @@ const ScanView = () => {
           source={require("../assets/mask-group.png")}
         />
       </Pressable>
-      <Property1DefaultImage
-        property1DefaultImageProp={require("../assets/home.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={772}
-        property1DefaultIconLeft={29}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage1
-        property1DefaultImage1Pro={require("../assets/notify1.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={772}
-        property1DefaultIconLeft={207}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage2
-        property1DefaultImage2Pro={require("../assets/perfil.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={772}
-        property1DefaultIconLeft={295}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Image
-        style={styles.qrIcon}
-        contentFit="cover"
-        source={require("../assets/qr1.png")}
-      />
+      <Pressable
+        onPress={() => {
+          navigation.replace("PantallaInicioAlumno");
+        }}
+      >
+        <Property1DefaultImage
+          property1DefaultImageProp={require("../assets/home.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={772}
+          property1DefaultIconLeft={20}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("Notificaciones1")}>
+        <Property1DefaultImage1
+          property1DefaultImage1Pro={require("../assets/notify1.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={772}
+          property1DefaultIconLeft={240}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("Perfil1")}>
+        <Property1DefaultImage2
+          property1DefaultImage2Pro={require("../assets/perfil.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={772}
+          property1DefaultIconLeft={350}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+          style={styles.qrIcon}
+          contentFit="cover"
+          source={require("../assets/qr1.png")}
+        />
+      </Pressable>
       <Image
         style={[styles.scanViewItem, styles.qrIcon1Position]}
         contentFit="cover"
@@ -85,7 +97,7 @@ const ScanView = () => {
           Diegote Maradona
         </Text>
         <Text style={[styles.legajo1234567Dni, styles.escanaElQrFlexBox]}>
-          Legajo 1234567 DNI 44870883
+          Legajo 1234567 DNI 3123
         </Text>
       </View>
     </View>
@@ -151,7 +163,7 @@ const styles = StyleSheet.create({
   },
   qrIcon: {
     top: 772,
-    left: 118,
+    left: 130,
     width: 60,
     height: 60,
     position: "absolute",

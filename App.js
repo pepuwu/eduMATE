@@ -8,7 +8,6 @@ import DetalleNotificacion from "./screens/DetalleNotificacion";
 import ScanView from "./screens/ScanView";
 import Advertencia from "./screens/Advertencia";
 import PantallaInicioAlumno from "./screens/PantallaInicioAlumno";
-import Perfil from "./screens/Perfil";
 import Login1 from "./screens/Login";
 import NotificacionVacia1 from "./screens/NotificacionVacia1";
 import Notificaciones1 from "./screens/Notificaciones1";
@@ -18,10 +17,6 @@ import Advertencia1 from "./screens/Advertencia1";
 import PantallaInicioAlumno1 from "./screens/PantallaInicioAlumno1";
 import Perfil1 from "./screens/Perfil1";
 import PantallaInicioAlumno2 from "./screens/PantallaInicioAlumno2";
-import Property1DefaultImage from "./components/Property1DefaultImage";
-import Property1DefaultImage1 from "./components/Property1DefaultImage1";
-import Property1DefaultImage2 from "./components/Property1DefaultImage2";
-import Button1 from "./components/Button1";
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import { IconRegistry, ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
@@ -109,7 +104,7 @@ const App = () => {
               <Stack.Screen
                 name="ScanView"
                 component={ScanView}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, animation: "flip" }}
               />
               <Stack.Screen
                 name="Advertencia"
@@ -119,12 +114,7 @@ const App = () => {
               <Stack.Screen
                 name="PantallaInicioAlumno"
                 component={PantallaInicioAlumno}
-                options={{ headerShown: false, animation: "slide_from_bottom" }}
-              />
-              <Stack.Screen
-                name="Perfil"
-                component={Perfil}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, animation: "flip" }}
               />
               <Stack.Screen
                 name="Login1"
@@ -139,7 +129,7 @@ const App = () => {
               <Stack.Screen
                 name="Notificaciones1"
                 component={Notificaciones1}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, animation: "flip" }}
               />
               <Stack.Screen
                 name="DetalleNotificacion1"
@@ -164,7 +154,7 @@ const App = () => {
               <Stack.Screen
                 name="Perfil1"
                 component={Perfil1}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, animation: "flip" }}
               />
               <Stack.Screen
                 name="PantallaInicioAlumno2"

@@ -1,13 +1,21 @@
 import * as React from "react";
 import { Image } from "expo-image";
-import { StyleSheet, View, ImageBackground, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  Text,
+  Pressable,
+} from "react-native";
 import Component5Icon from "../components/Component5Icon";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
 import Property1DefaultImage2 from "../components/Property1DefaultImage2";
 import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/core";
 
 const Perfil1 = () => {
+  const navigation = useNavigation();
   return (
     <View style={[styles.perfil, styles.perfilLayout]}>
       <Image
@@ -27,34 +35,52 @@ const Perfil1 = () => {
         source={require("../assets/mask-group.png")}
       />
       <Component5Icon />
-      <Property1DefaultImage
-        property1DefaultImageProp={require("../assets/home.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={34}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage1
-        property1DefaultImage1Pro={require("../assets/notify1.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={212}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage2
-        property1DefaultImage2Pro={require("../assets/perfil1.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={300}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
+      <Pressable
+        onPress={() => {
+          navigation.replace("PantallaInicioAlumno");
+        }}
+      >
+        <Property1DefaultImage
+          property1DefaultImageProp={require("../assets/home.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={20}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("ScanView")}>
+        <Image
+          style={styles.qrIcon}
+          contentFit="cover"
+          source={require("../assets/qr.png")}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.replace("Notificaciones1")}>
+        <Property1DefaultImage1
+          property1DefaultImage1Pro={require("../assets/notify1.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={240}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+      <Pressable>
+        <Property1DefaultImage2
+          property1DefaultImage2Pro={require("../assets/perfil1.png")}
+          property1DefaultIconPosition="absolute"
+          property1DefaultIconTop={773}
+          property1DefaultIconLeft={350}
+          property1DefaultIconWidth={60}
+          property1DefaultIconHeight={60}
+        />
+      </Pressable>
+
       <Image
         style={styles.qrIcon}
         contentFit="cover"
-        source={require("../assets/qr5.png")}
+        source={require("../assets/qr.png")}
       />
       <Text style={styles.edumate}>
         <Text style={styles.edu}>edu</Text>
@@ -160,7 +186,7 @@ const styles = StyleSheet.create({
   },
   qrIcon: {
     top: 773,
-    left: 123,
+    left: 130,
     width: 60,
     height: 60,
     position: "absolute",
