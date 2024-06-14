@@ -38,7 +38,7 @@ const Login1 = () => {
             source={require("../assets/rectangle-49.png")}
           />
           <Text
-            onPress={() => navigation.replace("InicioAlumnoScreen")}
+            onPress={() => navigation.replace("EscaneoScreen")}
             style={[styles.iniciarSesion, styles.login1Text]}
           >{`Iniciar Sesion `}</Text>
         </View>

@@ -90,7 +90,7 @@ const ScanView = () => {
         <Image
           style={[styles.scanViewItem, styles.qrIcon1Position]}
           contentFit="cover"
-          source={require("../assets/ellipse-7.png")}
+          source={require("../assets/ElipseAzul.png")}
         />
         <Image
           style={[styles.qrIcon1, styles.qrIcon1Position]}

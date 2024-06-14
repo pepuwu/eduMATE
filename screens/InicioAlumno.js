@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
-import fondoDegradado from "../assets/fondoDegradado.png";
+import { Text, StyleSheet } from "react-native";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
 import { Image } from "expo-image";
 import BaseScreen from "../components/BaseComponente";

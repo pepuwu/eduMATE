@@ -32,6 +32,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
+import EscaneoScreen from "./screens/Escaneo";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -105,11 +106,6 @@ const App = () => {
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="ScanView"
-                component={ScanView}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
                 name="Advertencia"
                 component={Advertencia}
                 options={{ headerShown: false }}
@@ -157,6 +153,11 @@ const App = () => {
               <Stack.Screen
                 name="InicioAlumnoScreen"
                 component={InicioAlumnoScreen}
+                options={{ headerShown: false }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="EscaneoScreen"
+                component={EscaneoScreen}
                 options={{ headerShown: false }}
               ></Stack.Screen>
             </Stack.Navigator>
