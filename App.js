@@ -150,19 +150,9 @@ const App = () => {
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="PantallaInicioAlumno1"
-                component={PantallaInicioAlumno1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
                 name="Perfil1"
                 component={Perfil1}
                 options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="PantallaInicioAlumno2"
-                component={PantallaInicioAlumno2}
-                options={{ headerShown: false }}
               />
               <Stack.Screen
                 name="InicioAlumnoScreen"
