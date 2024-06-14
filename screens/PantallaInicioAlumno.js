@@ -14,7 +14,7 @@ const PantallaInicioAlumno = () => {
       <Image
         style={[styles.image17Icon, styles.image17IconLayout]}
         contentFit="cover"
-        source={require("../assets/image-18.png")}
+        source={require("../assets/fondoDegradado.png")}
       />
       <Pressable
       // onPress={() => {

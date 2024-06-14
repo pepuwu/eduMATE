@@ -18,6 +18,9 @@ import PantallaInicioAlumno1 from "./screens/PantallaInicioAlumno1";
 import Perfil1 from "./screens/Perfil1";
 import PantallaInicioAlumno2 from "./screens/PantallaInicioAlumno2";
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
+
+import InicioAlumnoScreen from "./screens/InicioAlumno";
+
 import { IconRegistry, ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 
@@ -161,6 +164,11 @@ const App = () => {
                 component={PantallaInicioAlumno2}
                 options={{ headerShown: false }}
               />
+              <Stack.Screen
+                name="InicioAlumnoScreen"
+                component={InicioAlumnoScreen}
+                options={{ headerShown: false }}
+              ></Stack.Screen>
             </Stack.Navigator>
           ) : null}
         </NavigationContainer>
