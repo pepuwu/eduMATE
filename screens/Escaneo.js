@@ -1,7 +1,7 @@
 import React from "react";
 import BaseScreen from "../components/BaseComponente";
 import { Image } from "expo-image";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
 import { CameraView } from "expo-camera";
 import { useNavigation } from "@react-navigation/core";
@@ -54,23 +54,25 @@ const EscaneoScreen = () => {
           Legajo 1234567
         </Text>
         <View style={{ paddingTop: 75 }}>
-          <Image
-            style={{
-              width: 380,
-              height: 380,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            contentFit="cover"
-            source={require("../assets/ElipseAzul.png")}
-          >
+          <Pressable onPress={handlepress}>
             <Image
+              style={{
+                width: 380,
+                height: 380,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
               contentFit="cover"
-              source={require("../assets/qr2.png")}
-              style={{ width: 250, height: 250 }}
-            ></Image>
-            <Text style={styles.escaneaQR}>Escanea el QR</Text>
-          </Image>
+              source={require("../assets/ElipseAzul.png")}
+            >
+              <Image
+                contentFit="cover"
+                source={require("../assets/qr2.png")}
+                style={{ width: 250, height: 250 }}
+              ></Image>
+              <Text style={styles.escaneaQR}>Escanea el QR</Text>
+            </Image>
+          </Pressable>
         </View>
       </View>
     </BaseScreen>
