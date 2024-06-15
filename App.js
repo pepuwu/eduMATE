@@ -3,20 +3,6 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import Login from "./screens/Login";
-import NotificacionVacia from "./screens/NotificacionVacia";
-import DetalleNotificacion from "./screens/DetalleNotificacion";
-import ScanView from "./screens/ScanView";
-import Advertencia from "./screens/Advertencia";
-import PantallaInicioAlumno from "./screens/PantallaInicioAlumno";
-import Login1 from "./screens/Login";
-import NotificacionVacia1 from "./screens/NotificacionVacia1";
-import Notificaciones1 from "./screens/Notificaciones1";
-import DetalleNotificacion1 from "./screens/DetalleNotificacion1";
-import UbicacionView from "./screens/UbicacionView";
-import Advertencia1 from "./screens/Advertencia1";
-import PantallaInicioAlumno1 from "./screens/PantallaInicioAlumno1";
-import Perfil1 from "./screens/Perfil1";
-import PantallaInicioAlumno2 from "./screens/PantallaInicioAlumno2";
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import InicioAlumnoScreen from "./screens/InicioAlumno";
@@ -25,15 +11,10 @@ import { IconRegistry, ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  View,
-  Text,
-  Pressable,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { StyleSheet } from "react-native";
 import EscaneoScreen from "./screens/Escaneo";
 import NotificarScreen from "./screens/Notificar";
+import PerfilScreen from "./screens/Perfil";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -109,6 +90,11 @@ const App = () => {
               <Stack.Screen
                 name="NotificarScreen"
                 component={NotificarScreen}
+                options={{ headerShown: false }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="PerfilScreen"
+                component={PerfilScreen}
                 options={{ headerShown: false }}
               ></Stack.Screen>
             </Stack.Navigator>
