@@ -3,32 +3,18 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import Login from "./screens/Login";
-import NotificacionVacia from "./screens/NotificacionVacia";
-import DetalleNotificacion from "./screens/DetalleNotificacion";
-import ScanView from "./screens/ScanView";
-import Advertencia from "./screens/Advertencia";
-import PantallaInicioAlumno from "./screens/PantallaInicioAlumno";
-import Login1 from "./screens/Login";
-import NotificacionVacia1 from "./screens/NotificacionVacia1";
-import Notificaciones1 from "./screens/Notificaciones1";
-import DetalleNotificacion1 from "./screens/DetalleNotificacion1";
-import UbicacionView from "./screens/UbicacionView";
-import Advertencia1 from "./screens/Advertencia1";
-import PantallaInicioAlumno1 from "./screens/PantallaInicioAlumno1";
-import Perfil1 from "./screens/Perfil1";
-import PantallaInicioAlumno2 from "./screens/PantallaInicioAlumno2";
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
+
+import InicioAlumnoScreen from "./screens/InicioAlumno";
+
 import { IconRegistry, ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  View,
-  Text,
-  Pressable,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import { StyleSheet } from "react-native";
+import EscaneoScreen from "./screens/Escaneo";
+import NotificarScreen from "./screens/Notificar";
+import PerfilScreen from "./screens/Perfil";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -92,75 +78,25 @@ const App = () => {
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="NotificacionVacia"
-                component={NotificacionVacia}
+                name="InicioAlumnoScreen"
+                component={InicioAlumnoScreen}
                 options={{ headerShown: false }}
-              />
+              ></Stack.Screen>
               <Stack.Screen
-                name="DetalleNotificacion"
-                component={DetalleNotificacion}
+                name="EscaneoScreen"
+                component={EscaneoScreen}
                 options={{ headerShown: false }}
-              />
+              ></Stack.Screen>
               <Stack.Screen
-                name="ScanView"
-                component={ScanView}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="Advertencia"
-                component={Advertencia}
+                name="NotificarScreen"
+                component={NotificarScreen}
                 options={{ headerShown: false }}
-              />
+              ></Stack.Screen>
               <Stack.Screen
-                name="PantallaInicioAlumno"
-                component={PantallaInicioAlumno}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="Login1"
-                component={Login1}
+                name="PerfilScreen"
+                component={PerfilScreen}
                 options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="NotificacionVacia1"
-                component={NotificacionVacia1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Notificaciones1"
-                component={Notificaciones1}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="DetalleNotificacion1"
-                component={DetalleNotificacion1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="UbicacionView"
-                component={UbicacionView}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Advertencia1"
-                component={Advertencia1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="PantallaInicioAlumno1"
-                component={PantallaInicioAlumno1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Perfil1"
-                component={Perfil1}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="PantallaInicioAlumno2"
-                component={PantallaInicioAlumno2}
-                options={{ headerShown: false }}
-              />
+              ></Stack.Screen>
             </Stack.Navigator>
           ) : null}
         </NavigationContainer>

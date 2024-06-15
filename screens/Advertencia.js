@@ -2,9 +2,6 @@ import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Property1DefaultImage from "../components/Property1DefaultImage";
-import Property1DefaultImage1 from "../components/Property1DefaultImage1";
-import Property1DefaultImage2 from "../components/Property1DefaultImage2";
 import Button1 from "../components/Button1";
 import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
 
@@ -48,30 +45,6 @@ const Advertencia = () => {
           source={require("../assets/mask-group.png")}
         />
       </Pressable>
-      <Property1DefaultImage
-        property1DefaultImageProp={require("../assets/home.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={34}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage1
-        property1DefaultImage1Pro={require("../assets/notify1.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={212}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
-      <Property1DefaultImage2
-        property1DefaultImage2Pro={require("../assets/perfil.png")}
-        property1DefaultIconPosition="absolute"
-        property1DefaultIconTop={773}
-        property1DefaultIconLeft={300}
-        property1DefaultIconWidth={60}
-        property1DefaultIconHeight={60}
-      />
       <Image
         style={styles.qrIcon}
         contentFit="cover"
