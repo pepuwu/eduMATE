@@ -3,31 +3,34 @@ import { Text, StyleSheet } from "react-native";
 import { Color, FontFamily, FontSize } from "../GlobalStyles";
 import { Image } from "expo-image";
 import BaseScreen from "../components/BaseComponente";
+import { View } from "react-native";
 
 const InicioAlumnoScreen = () => {
   return (
-    <BaseScreen>
-      <Text
-        style={{
-          textAlign: "center",
-          fontWeight: "700",
-          fontFamily: FontFamily.sunflowerBold,
-          fontSize: FontSize.size_31xl,
-          paddingTop: 120,
-        }}
-      >
-        <Text style={styles.edu}>edu</Text>
-        <Text style={styles.mate}>MATE</Text>
-      </Text>
-      <Image
-        source={require("../assets/component-5.png")}
-        contentFit="cover"
-        style={styles.avatarQRInicio}
-      ></Image>
-      <Text style={styles.bienvenidaContainer}>
-        <Text style={styles.bienvenida}>{`¡Bienvenido, `}</Text>
-        <Text style={styles.nombre}>Usuario!</Text>
-      </Text>
+    <BaseScreen proviene={"home"}>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <Text
+          style={{
+            textAlign: "center",
+            fontWeight: "700",
+            fontFamily: FontFamily.sunflowerBold,
+            fontSize: FontSize.size_31xl,
+            paddingTop: 120,
+          }}
+        >
+          <Text style={styles.edu}>edu</Text>
+          <Text style={styles.mate}>MATE</Text>
+        </Text>
+        <Image
+          source={require("../assets/component-5.png")}
+          contentFit="cover"
+          style={styles.avatarQRInicio}
+        ></Image>
+        <Text style={styles.bienvenidaContainer}>
+          <Text style={styles.bienvenida}>{`¡Bienvenido, `}</Text>
+          <Text style={styles.nombre}>Juan!</Text>
+        </Text>
+      </View>
     </BaseScreen>
   );
 };

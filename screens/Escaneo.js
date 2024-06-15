@@ -25,7 +25,7 @@ const EscaneoScreen = () => {
   };
 
   return (
-    <BaseScreen>
+    <BaseScreen proviene={"qr"}>
       <View
         style={{
           flex: 1,

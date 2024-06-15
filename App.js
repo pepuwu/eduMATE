@@ -96,61 +96,6 @@ const App = () => {
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="NotificacionVacia"
-                component={NotificacionVacia}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="DetalleNotificacion"
-                component={DetalleNotificacion}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Advertencia"
-                component={Advertencia}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="PantallaInicioAlumno"
-                component={PantallaInicioAlumno}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="Login1"
-                component={Login1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="NotificacionVacia1"
-                component={NotificacionVacia1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Notificaciones1"
-                component={Notificaciones1}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
-                name="DetalleNotificacion1"
-                component={DetalleNotificacion1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="UbicacionView"
-                component={UbicacionView}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Advertencia1"
-                component={Advertencia1}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="Perfil1"
-                component={Perfil1}
-                options={{ headerShown: false, animation: "flip" }}
-              />
-              <Stack.Screen
                 name="InicioAlumnoScreen"
                 component={InicioAlumnoScreen}
                 options={{ headerShown: false }}

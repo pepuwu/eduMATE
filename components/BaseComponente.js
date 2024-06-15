@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import { ImageBackground } from "react-native";
 import fondoDegradado from "../assets/fondoDegradado.png";
 
-const BaseScreen = ({ children, provine }) => {
+const BaseScreen = ({ children, proviene }) => {
   return (
     <ImageBackground
       source={fondoDegradado}
@@ -12,7 +12,7 @@ const BaseScreen = ({ children, provine }) => {
     >
       <View style={{ flex: 1 }}>
         {children}
-        <NavBar />
+        <NavBar proviene={proviene} />
       </View>
     </ImageBackground>
   );
