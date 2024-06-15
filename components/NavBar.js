@@ -56,14 +56,14 @@ const NavBar = ({ proviene }) => {
         </Pressable>
         <Pressable
           onPress={() => {
-            navigation.replace("InicioAlumnoScreen");
+            navigation.replace("NotificarScreen");
           }}
         >
           <Image source={notifyIcon} style={{ height: 60, width: 60 }}></Image>
         </Pressable>
         <Pressable
           onPress={() => {
-            navigation.replace("PantallaInicioAlumno");
+            navigation.replace("InicioAlumnoScreen");
           }}
         >
           <Image source={profileIcon} style={{ height: 60, width: 60 }}></Image>

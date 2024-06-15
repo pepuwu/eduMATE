@@ -33,6 +33,7 @@ import {
   StyleSheet,
 } from "react-native";
 import EscaneoScreen from "./screens/Escaneo";
+import NotificarScreen from "./screens/Notificar";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -103,6 +104,11 @@ const App = () => {
               <Stack.Screen
                 name="EscaneoScreen"
                 component={EscaneoScreen}
+                options={{ headerShown: false }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="NotificarScreen"
+                component={NotificarScreen}
                 options={{ headerShown: false }}
               ></Stack.Screen>
             </Stack.Navigator>
