@@ -2,7 +2,6 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import Login from "./screens/Login";
 import MIcon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import InicioAlumnoScreen from "./screens/InicioAlumno";
@@ -15,6 +14,7 @@ import { StyleSheet } from "react-native";
 import EscaneoScreen from "./screens/Escaneo";
 import NotificarScreen from "./screens/Notificar";
 import PerfilScreen from "./screens/Perfil";
+import LoginScreen from "./screens/Login";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -69,12 +69,12 @@ const App = () => {
         <NavigationContainer>
           {hideSplashScreen ? (
             <Stack.Navigator
-              initialRouteName="Login"
+              initialRouteName="LoginScreen"
               screenOptions={{ headerShown: false }}
             >
               <Stack.Screen
-                name="Login"
-                component={Login}
+                name="LoginScreen"
+                component={LoginScreen}
                 options={{ headerShown: false }}
               />
               <Stack.Screen

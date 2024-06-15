@@ -7,6 +7,7 @@ import fondoDegradado from "../assets/fondoDegradado.png";
 const BaseScreen = ({ children, proviene }) => {
   return (
     <ImageBackground
+      resizeMode="cover"
       source={fondoDegradado}
       style={{ flex: 1, width: "100%", height: "100%" }}
     >
