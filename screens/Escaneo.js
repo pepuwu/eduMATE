@@ -1,27 +1,81 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BaseScreen from "../components/BaseComponente";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
 import { CameraView } from "expo-camera";
 import { useNavigation } from "@react-navigation/core";
+import * as Location from "expo-location";
+import { postPresente } from "../servicios/serviciosGenerales";
 
 const EscaneoScreen = () => {
+  const [location, setLocation] = useState(null);
   const navigation = useNavigation();
+  const [isScanning, setIsScanning] = useState(false);
+  const scannerSetUp = useRef(false);
+
+  useEffect(() => {
+    const getPermisos = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permiso denegado");
+        return;
+      }
+
+      if (location === null) {
+        getLocacion();
+      }
+    };
+    getPermisos();
+  }, []);
+
+  const getLocacion = async () => {
+    let currentLocation = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.Low,
+    });
+    setLocation(currentLocation);
+  };
+
+  const handleScan = async (data) => {
+    try {
+      const response = await postPresente(
+        data,
+        location.coords.latitude,
+        location.coords.longitude
+      );
+      if (response === 200) {
+        console.log("Presente exitoso");
+      } else {
+        console.log("Error en el presente");
+      }
+    } catch (error) {
+      console.error("Error durante el scan:", error);
+    } finally {
+      setIsScanning(false);
+    }
+  };
 
   const handlepress = () => {
+    if (isScanning) return;
+    setIsScanning(true);
+
+    if (!scannerSetUp.current) {
+      CameraView.onModernBarcodeScanned((data) => {
+        CameraView.dismissScanner().then(() => {
+          handleScan(data.data);
+          setIsScanning(false);
+        });
+      });
+      scannerSetUp.current = true;
+    }
+
     CameraView.launchScanner({
       isHighlightingEnabled: true,
       isGuidanceEnabled: false,
       VideoStabilization: "off",
       VideoQuality: "1080p",
       barCodeTypes: ["qr"],
-    }).then(
-      CameraView.onModernBarcodeScanned((data) => {
-        console.log(data);
-        CameraView.dismissScanner();
-      })
-    );
+    });
   };
 
   return (
