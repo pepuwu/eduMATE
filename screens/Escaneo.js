@@ -7,12 +7,13 @@ import { CameraView } from "expo-camera";
 import { useNavigation } from "@react-navigation/core";
 import * as Location from "expo-location";
 import { postPresente } from "../servicios/serviciosGenerales";
+import { useScanner } from "../ScannerContext";
 
 const EscaneoScreen = () => {
   const [location, setLocation] = useState(null);
   const navigation = useNavigation();
-  const [isScanning, setIsScanning] = useState(false);
-  const scannerSetUp = useRef(false);
+  const { launchScanner } = useScanner();
+  const [presente, isPresente] = useState(false);
 
   useEffect(() => {
     const getPermisos = async () => {
@@ -26,6 +27,7 @@ const EscaneoScreen = () => {
         getLocacion();
       }
     };
+
     getPermisos();
   }, []);
 
@@ -45,6 +47,7 @@ const EscaneoScreen = () => {
       );
       if (response === 200) {
         console.log("Presente exitoso");
+        isPresente(true);
       } else {
         console.log("Error en el presente");
       }
@@ -56,79 +59,64 @@ const EscaneoScreen = () => {
   };
 
   const handlepress = () => {
-    if (isScanning) return;
-    setIsScanning(true);
-
-    if (!scannerSetUp.current) {
-      CameraView.onModernBarcodeScanned((data) => {
-        CameraView.dismissScanner().then(() => {
-          handleScan(data.data);
-          setIsScanning(false);
-        });
-      });
-      scannerSetUp.current = true;
-    }
-
-    CameraView.launchScanner({
-      isHighlightingEnabled: true,
-      isGuidanceEnabled: false,
-      VideoStabilization: "off",
-      VideoQuality: "1080p",
-      barCodeTypes: ["qr"],
-    });
+    launchScanner(handleScan);
   };
 
   return (
     <BaseScreen proviene={"qr"}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          flexDirection: "column",
-          paddingTop: 110,
-        }}
-      >
-        <Text
+      {!presente ? (
+        <View
           style={{
-            fontSize: FontSize.size_3xl,
-            fontFamily: FontFamily.poppinsBold,
-            fontWeight: "700",
-            textAlign: "left",
-            color: Color.colorBlack,
+            flex: 1,
+            alignItems: "center",
+            flexDirection: "column",
+            paddingTop: 110,
           }}
         >
-          Juan Esteban
-        </Text>
-        <Text
-          style={{
-            fontSize: 14,
-            fontFamily: FontFamily.urbanistRegular,
-          }}
-        >
-          Legajo 1234567
-        </Text>
-        <View style={{ paddingTop: 75 }}>
-          <Pressable onPress={handlepress}>
-            <Image
-              style={{
-                width: 380,
-                height: 380,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              contentFit="cover"
-              source={require("../assets/ElipseAzul.png")}
-            >
+          <Text
+            style={{
+              fontSize: FontSize.size_3xl,
+              fontFamily: FontFamily.poppinsBold,
+              fontWeight: "700",
+              textAlign: "left",
+              color: Color.colorBlack,
+            }}
+          >
+            Juan Esteban
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: FontFamily.urbanistRegular,
+            }}
+          >
+            Legajo 1234567
+          </Text>
+          <View style={{ paddingTop: 75 }}>
+            <Pressable onPress={handlepress}>
               <Image
+                style={{
+                  width: 380,
+                  height: 380,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
                 contentFit="cover"
-                source={require("../assets/qr2.png")}
-                style={{ width: 250, height: 250 }}
-              ></Image>
-              <Text style={styles.escaneaQR}>Escanea el QR</Text>
-            </Image>
-          </Pressable>
+                source={require("../assets/ElipseAzul.png")}
+              >
+                <Image
+                  contentFit="cover"
+                  source={require("../assets/qr2.png")}
+                  style={{ width: 250, height: 250 }}
+                ></Image>
+                <Text style={styles.escaneaQR}>Escanea el QR</Text>
+              </Image>
+            </Pressable>
+          </View>
         </View>
-      </View>
+      ) : (
+        <Text>Presente dado</Text>
+      )}
     </BaseScreen>
   );
 };

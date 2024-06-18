@@ -15,6 +15,7 @@ import EscaneoScreen from "./screens/Escaneo";
 import NotificarScreen from "./screens/Notificar";
 import PerfilScreen from "./screens/Perfil";
 import LoginScreen from "./screens/Login";
+import { ScannerProvider } from "./ScannerContext";
 
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
@@ -66,40 +67,42 @@ const App = () => {
     <>
       <IconRegistry icons={[MaterialIconsPack]} />
       <ApplicationProvider {...eva} theme={eva.light}>
-        <NavigationContainer>
-          {hideSplashScreen ? (
-            <Stack.Navigator
-              initialRouteName="LoginScreen"
-              screenOptions={{ headerShown: false }}
-            >
-              <Stack.Screen
-                name="LoginScreen"
-                component={LoginScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="InicioAlumnoScreen"
-                component={InicioAlumnoScreen}
-                options={{ headerShown: false }}
-              ></Stack.Screen>
-              <Stack.Screen
-                name="EscaneoScreen"
-                component={EscaneoScreen}
-                options={{ headerShown: false }}
-              ></Stack.Screen>
-              <Stack.Screen
-                name="NotificarScreen"
-                component={NotificarScreen}
-                options={{ headerShown: false }}
-              ></Stack.Screen>
-              <Stack.Screen
-                name="PerfilScreen"
-                component={PerfilScreen}
-                options={{ headerShown: false }}
-              ></Stack.Screen>
-            </Stack.Navigator>
-          ) : null}
-        </NavigationContainer>
+        <ScannerProvider>
+          <NavigationContainer>
+            {hideSplashScreen ? (
+              <Stack.Navigator
+                initialRouteName="LoginScreen"
+                screenOptions={{ headerShown: false }}
+              >
+                <Stack.Screen
+                  name="LoginScreen"
+                  component={LoginScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="InicioAlumnoScreen"
+                  component={InicioAlumnoScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="EscaneoScreen"
+                  component={EscaneoScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="NotificarScreen"
+                  component={NotificarScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="PerfilScreen"
+                  component={PerfilScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+              </Stack.Navigator>
+            ) : null}
+          </NavigationContainer>
+        </ScannerProvider>
       </ApplicationProvider>
     </>
   );
