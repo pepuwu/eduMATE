@@ -17,10 +17,9 @@ export const ScannerProvider = ({ children }) => {
   const scannerHandler = useRef(null); // Referencia para manejar el callback actual
 
   useEffect(() => {
-    // Configura el listener solo una vez, al montar el componente
     CameraView.onModernBarcodeScanned((data) => {
       if (data && scannerHandler.current) {
-        scannerHandler.current(data.data); // Llamar al callback con los datos escaneados
+        scannerHandler.current(data.data);
       }
       setIsScanning(false);
       CameraView.dismissScanner();
@@ -28,14 +27,14 @@ export const ScannerProvider = ({ children }) => {
 
     return () => {
       CameraView.dismissScanner();
-      CameraView.onModernBarcodeScanned(null); // Limpia el evento correctamente
+      CameraView.onModernBarcodeScanned(null);
     };
   }, []);
 
   const launchScanner = (onScan) => {
     if (isScanning) return;
     setIsScanning(true);
-    scannerHandler.current = onScan; // Guardar la referencia del callback actual
+    scannerHandler.current = onScan;
 
     CameraView.launchScanner({
       isHighlightingEnabled: true,

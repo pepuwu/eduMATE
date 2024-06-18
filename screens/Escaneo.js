@@ -2,18 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import BaseScreen from "../components/BaseComponente";
 import { Image } from "expo-image";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
 import { CameraView } from "expo-camera";
 import { useNavigation } from "@react-navigation/core";
 import * as Location from "expo-location";
 import { postPresente } from "../servicios/serviciosGenerales";
 import { useScanner } from "../ScannerContext";
+import * as Application from "expo-application";
+
+// import { Audio } from "expo-av";
+// import dingSound from "../assets/audio/ding.mp3";
+// import warningSound from "../assets/audio/warning.mp3";
+// import errorSound from "../assets/audio/error_1.mp3";
 
 const EscaneoScreen = () => {
   const [location, setLocation] = useState(null);
   const navigation = useNavigation();
   const { launchScanner } = useScanner();
   const [presente, isPresente] = useState(false);
+  const [presenteStatus, setPresenteStatus] = useState(null);
+  const [deviceId, setDeviceId] = useState(null);
 
   useEffect(() => {
     const getPermisos = async () => {
@@ -28,28 +37,41 @@ const EscaneoScreen = () => {
       }
     };
 
+    getId();
     getPermisos();
   }, []);
 
+  const getId = async () => {
+    let id = await Application.getIosIdForVendorAsync();
+    setDeviceId(id);
+  };
+
   const getLocacion = async () => {
     let currentLocation = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.Low,
+      accuracy: Location.Accuracy.Balanced,
     });
     setLocation(currentLocation);
   };
 
   const handleScan = async (data) => {
+    setPresenteStatus("");
     try {
       const response = await postPresente(
         data,
         location.coords.latitude,
-        location.coords.longitude
+        location.coords.longitude,
+        deviceId
       );
       if (response === 200) {
         console.log("Presente exitoso");
+        setPresenteStatus("OK");
         isPresente(true);
+      } else if (response === 409) {
+        console.log("Ya diste tu presente");
+        setPresenteStatus("ERROR-YA-PRESENTE");
       } else {
         console.log("Error en el presente");
+        setPresenteStatus("ERROR-UBICACION");
       }
     } catch (error) {
       console.error("Error durante el scan:", error);
@@ -62,9 +84,93 @@ const EscaneoScreen = () => {
     launchScanner(handleScan);
   };
 
+  const getImg = () => {
+    if (presenteStatus === "OK") {
+      return require("../assets/bienTick.png");
+    } else if (presenteStatus === "ERROR-UBICACION") {
+      return require("../assets/errorTick.png");
+    } else {
+      return require("../assets/warningTick.png");
+    }
+  };
+
+  const getPresenteText = () => {
+    if (presenteStatus === "OK") {
+      return "¡Diste tu presente!";
+    } else if (presenteStatus === "ERROR-UBICACION") {
+      return "Error con la ubicación";
+    } else {
+      return "Este dispositivo ya fue registrado";
+    }
+  };
+
+  // const getUriSound = (presenteStatus) => {
+  //   if (presenteStatus === "OK") {
+  //     return dingSound;
+  //   } else if (presenteStatus === "ERROR-UBICACION") {
+  //     return warningSound;
+  //   } else {
+  //     return errorSound;
+  //   }
+  // };
+
+  // async function playSound() {
+  //   try {
+  //     const { sound } = await Audio.Sound.createAsync(
+  //       getUriSound(presenteStatus),
+  //       {},
+  //       (status) => {
+  //         if (!status.isLoaded) {
+  //           console.log("Sound loading error: ", status.error);
+  //         }
+  //       }
+  //     );
+  //     await sound.playAsync();
+  //     sound.setOnPlaybackStatusUpdate((status) => {
+  //       if (!status.isLoaded) {
+  //         console.error("Playback status: ", status.error);
+  //       }
+  //       if (status.didJustFinish) {
+  //         sound.unloadAsync();
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error("Error playing sound: ", error);
+  //   }
+  // }
+
+  const RenderTick = () => {
+    useEffect(() => {
+      console.log("Playing sound");
+      // playSound();
+    }, [presenteStatus]);
+
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          flexDirection: "column",
+          paddingTop: 220,
+        }}
+      >
+        <Image source={getImg()} style={{ height: 320, width: 320 }}></Image>
+        <Text
+          style={{
+            color: "white",
+            fontSize: 22,
+            fontWeight: 700,
+          }}
+        >
+          {getPresenteText()}
+        </Text>
+      </View>
+    );
+  };
+
   return (
     <BaseScreen proviene={"qr"}>
-      {!presente ? (
+      {!presente && presenteStatus === null ? (
         <View
           style={{
             flex: 1,
@@ -114,8 +220,12 @@ const EscaneoScreen = () => {
             </Pressable>
           </View>
         </View>
+      ) : presenteStatus.length > 0 ? (
+        <RenderTick />
       ) : (
-        <Text>Presente dado</Text>
+        <View style={{ paddingTop: 380 }}>
+          <ActivityIndicator animating={true} color={"#194569"} size={65} />
+        </View>
       )}
     </BaseScreen>
   );
