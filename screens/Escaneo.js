@@ -141,7 +141,7 @@ const EscaneoScreen = () => {
 
   const RenderTick = () => {
     useEffect(() => {
-      console.log("Playing sound");
+      // console.log("Playing sound");
       // playSound();
     }, [presenteStatus]);
 
