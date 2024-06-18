@@ -14,7 +14,11 @@ import EscaneoScreen from "./screens/Escaneo";
 import NotificarScreen from "./screens/Notificar";
 import PerfilScreen from "./screens/Perfil";
 import LoginScreen from "./screens/Login";
+
+import { ScannerProvider } from "./ScannerContext";
+
 import { Image } from "expo-image";
+
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -53,6 +57,45 @@ const App = () => {
   return (
     <>
       <IconRegistry icons={[MaterialIconsPack]} />
+
+      <ApplicationProvider {...eva} theme={eva.light}>
+        <ScannerProvider>
+          <NavigationContainer>
+            {hideSplashScreen ? (
+              <Stack.Navigator
+                initialRouteName="LoginScreen"
+                screenOptions={{ headerShown: false }}
+              >
+                <Stack.Screen
+                  name="LoginScreen"
+                  component={LoginScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="InicioAlumnoScreen"
+                  component={InicioAlumnoScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="EscaneoScreen"
+                  component={EscaneoScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="NotificarScreen"
+                  component={NotificarScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+                <Stack.Screen
+                  name="PerfilScreen"
+                  component={PerfilScreen}
+                  options={{ headerShown: false }}
+                ></Stack.Screen>
+              </Stack.Navigator>
+            ) : null}
+          </NavigationContainer>
+        </ScannerProvider>
+      </ApplicationProvider>
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="LoginScreen"
