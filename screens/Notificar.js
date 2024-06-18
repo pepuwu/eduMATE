@@ -10,7 +10,7 @@ const NotificarScreen = () => {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          paddingTop: 90,
+          paddingTop: 110,
         }}
       >
         <View style={styles.cardNoti}>
