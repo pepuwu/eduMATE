@@ -52,9 +52,17 @@ const LoginScreen = () => {
               activeUnderlineColor="white"
               style={{ backgroundColor: "#898989", height: 55 }}
             />
-            <Text style={{ alignSelf: "center", fontSize: 12, color: "white" }}>
-              ¿Olvidaste tu contraseña?
-            </Text>
+            <Pressable
+              onPress={() => {
+                navigation.replace("InicioProfesorPage");
+              }}
+            >
+              <Text
+                style={{ alignSelf: "center", fontSize: 12, color: "white" }}
+              >
+                ¿Olvidaste tu contraseña?
+              </Text>
+            </Pressable>
           </View>
           <Pressable
             onPress={() => {

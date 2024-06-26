@@ -1,8 +1,14 @@
 import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, View, Text, ImageBackground } from "react-native";
-import Button1 from "../components/Button1";
-import { Color, Border, FontFamily, FontSize, Padding } from "../GlobalStyles";
+import Button1 from "../../components/Button1";
+import {
+  Color,
+  Border,
+  FontFamily,
+  FontSize,
+  Padding,
+} from "../../GlobalStyles";
 
 const Advertencia1 = () => {
   return (

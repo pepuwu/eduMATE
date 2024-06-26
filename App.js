@@ -18,6 +18,10 @@ import LoginScreen from "./screens/Login";
 import { ScannerProvider } from "./ScannerContext";
 
 import { Image } from "expo-image";
+import InicioProfesorPage from "./screens/InicioProfesor";
+import CreacionEncuestaPage from "./screens/CreacionEncuestaPage";
+import NotificacionesProfesorPage from "./screens/NotificacionesProfesor";
+import PerfilProfesorPage from "./screens/PerfilProfesor";
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -102,6 +106,46 @@ const App = () => {
               <Stack.Screen
                 name="PerfilScreen"
                 component={PerfilScreen}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="InicioProfesorPage"
+                component={InicioProfesorPage}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="CreacionEncuestaPage"
+                component={CreacionEncuestaPage}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="NotificacionesProfesorPage"
+                component={NotificacionesProfesorPage}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="PerfilProfesorPage"
+                component={PerfilProfesorPage}
                 options={{
                   headerShown: true,
                   headerTransparent: true,

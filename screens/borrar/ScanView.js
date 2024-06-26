@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
 import Property1DefaultImage2 from "../components/Property1DefaultImage2";
-import { Color, FontSize, FontFamily, Border } from "../GlobalStyles";
+import { Color, FontSize, FontFamily, Border } from "../../GlobalStyles";
 import { CameraView } from "expo-camera";
 import { VideoQuality } from "expo-camera/build/legacy/Camera.types";
 

@@ -48,13 +48,14 @@ const EscaneoScreen = () => {
 
   const getLocacion = async () => {
     let currentLocation = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.Balanced,
+      accuracy: Location.Accuracy.High,
     });
     setLocation(currentLocation);
   };
 
   const handleScan = async (data) => {
     setPresenteStatus("");
+    console.log(location.coords.latitude, location.coords.longitude, deviceId);
     try {
       const response = await postPresente(
         data,
@@ -176,12 +177,23 @@ const EscaneoScreen = () => {
             flex: 1,
             alignItems: "center",
             flexDirection: "column",
-            paddingTop: 110,
+            paddingTop: 100,
           }}
         >
           <Text
             style={{
               fontSize: FontSize.size_3xl,
+              fontFamily: FontFamily.poppinsBold,
+              fontWeight: "700",
+              textAlign: "left",
+              color: Color.colorDarkslateblue,
+            }}
+          >
+            Estás en Álgebra - Aula 1
+          </Text>
+          <Text
+            style={{
+              fontSize: 20,
               fontFamily: FontFamily.poppinsBold,
               fontWeight: "700",
               textAlign: "left",
