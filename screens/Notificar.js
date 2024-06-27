@@ -1,28 +1,43 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const NotificarScreen = () => {
   return (
     <BaseScreen proviene={"notify"}>
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 110,
-        }}
-      >
-        <View style={styles.cardNoti}>
-          <Text style={styles.titleNoti}>¿CÓMO ESTUVO SU CLASE?</Text>
-          <Text style={{ paddingBottom: 5, fontWeight: 300, fontSize: 12 }}>
-            Tu opinión nos importa.
-          </Text>
-          <View style={styles.encuestaButton}>
-            <Text style={styles.buttonText}>Completa la encuesta</Text>
+      <View style={{ height: 100 }}></View>
+      <ScrollView>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View style={styles.cardNoti}>
+            <Text style={styles.titleNoti}>
+              ¿CÓMO ESTUVO SU CLASE DE FÍSICA II?
+            </Text>
+            <Text style={{ paddingBottom: 5, fontWeight: 300, fontSize: 12 }}>
+              Tu opinión nos importa.
+            </Text>
+            <View style={styles.encuestaButton}>
+              <Text style={styles.buttonText}>Completa la encuesta</Text>
+            </View>
+          </View>
+          <View style={styles.cardNoti}>
+            <Text style={styles.titleNoti}>
+              ¿CÓMO ESTUVO SU CLASE DE ÁLGEBRA?
+            </Text>
+            <Text style={{ paddingBottom: 5, fontWeight: 300, fontSize: 12 }}>
+              Tu opinión nos importa.
+            </Text>
+            <View style={styles.encuestaButton}>
+              <Text style={styles.buttonText}>Completa la encuesta</Text>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </BaseScreen>
   );
 };
@@ -38,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-between",
+    marginTop: 8,
   },
   titleNoti: {
     fontSize: FontSize.size_base,
