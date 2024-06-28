@@ -5,7 +5,7 @@ import { ImageBackground } from "react-native";
 import fondoDegradado from "../assets/fondoDegradado.png";
 import NavBarProfesor from "./NavBarProfesor";
 
-const BaseScreen = ({ children, proviene, alumno = true }) => {
+const BaseScreen = ({ children, proviene, alumno = true, visible = true }) => {
   return (
     <ImageBackground
       resizeMode="cover"
@@ -17,7 +17,7 @@ const BaseScreen = ({ children, proviene, alumno = true }) => {
         {alumno ? (
           <NavBar proviene={proviene} />
         ) : (
-          <NavBarProfesor proviene={proviene} />
+          visible && <NavBarProfesor proviene={proviene} />
         )}
       </View>
     </ImageBackground>

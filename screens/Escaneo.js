@@ -36,7 +36,6 @@ const EscaneoScreen = () => {
         getLocacion();
       }
     };
-
     getId();
     getPermisos();
   }, []);
@@ -48,7 +47,7 @@ const EscaneoScreen = () => {
 
   const getLocacion = async () => {
     let currentLocation = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.High,
+      accuracy: Location.Accuracy.Balanced,
     });
     setLocation(currentLocation);
   };
@@ -105,46 +104,8 @@ const EscaneoScreen = () => {
     }
   };
 
-  // const getUriSound = (presenteStatus) => {
-  //   if (presenteStatus === "OK") {
-  //     return dingSound;
-  //   } else if (presenteStatus === "ERROR-UBICACION") {
-  //     return warningSound;
-  //   } else {
-  //     return errorSound;
-  //   }
-  // };
-
-  // async function playSound() {
-  //   try {
-  //     const { sound } = await Audio.Sound.createAsync(
-  //       getUriSound(presenteStatus),
-  //       {},
-  //       (status) => {
-  //         if (!status.isLoaded) {
-  //           console.log("Sound loading error: ", status.error);
-  //         }
-  //       }
-  //     );
-  //     await sound.playAsync();
-  //     sound.setOnPlaybackStatusUpdate((status) => {
-  //       if (!status.isLoaded) {
-  //         console.error("Playback status: ", status.error);
-  //       }
-  //       if (status.didJustFinish) {
-  //         sound.unloadAsync();
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error("Error playing sound: ", error);
-  //   }
-  // }
-
   const RenderTick = () => {
-    useEffect(() => {
-      // console.log("Playing sound");
-      // playSound();
-    }, [presenteStatus]);
+    useEffect(() => {}, [presenteStatus]);
 
     return (
       <View
