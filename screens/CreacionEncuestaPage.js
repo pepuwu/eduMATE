@@ -15,8 +15,8 @@ import { useNavigation } from "@react-navigation/core";
 
 const materias = [
   { title: "Algebra" },
-  { title: "Programacion" },
-  { title: "Programacion 2" },
+  { title: "Programación" },
+  { title: "Programación 2" },
   { title: "Objetos" },
   { title: "Sistemas" },
 ];
@@ -83,6 +83,7 @@ const CreacionEncuestaPage = () => {
   [preguntas, setPreguntas] = useState([]);
   const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [isButton2Pressed, setIsButton2Pressed] = useState(false);
+  const [isButton3Pressed, setIsButton3Pressed] = useState(false);
 
   const handleAgregar = () => {
     setPreguntas([...preguntas, { index: preguntas.length + 1 }]);
@@ -177,26 +178,28 @@ const CreacionEncuestaPage = () => {
               padding: 10,
             }}
           >
-            <Pressable
-              style={{
-                height: 50,
-                width: 100,
-                backgroundColor: isButton2Pressed ? "#071f40" : "#0d3873",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: 20,
-              }}
-              onPressIn={() => setIsButton2Pressed(true)}
-              onPressOut={() => setIsButton2Pressed(false)}
-              onPress={() => navigation.replace("InicioProfesorPage")}
-              is
-            >
-              <Text
-                style={{ color: "white", fontWeight: "bold", fontSize: 15 }}
+            <View style={{ flexDirection: "row" }}>
+              <Pressable
+                style={{
+                  height: 50,
+                  width: 100,
+                  backgroundColor: isButton2Pressed ? "#071f40" : "#0d3873",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderRadius: 20,
+                  marginLeft: 5,
+                }}
+                onPressIn={() => setIsButton2Pressed(true)}
+                onPressOut={() => setIsButton2Pressed(false)}
+                onPress={() => navigation.replace("InicioProfesorPage")}
               >
-                Guardar
-              </Text>
-            </Pressable>
+                <Text
+                  style={{ color: "white", fontWeight: "bold", fontSize: 15 }}
+                >
+                  Guardar
+                </Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </View>

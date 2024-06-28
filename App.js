@@ -9,7 +9,7 @@ import { IconRegistry, ApplicationProvider } from "@ui-kitten/components";
 import * as eva from "@eva-design/eva";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet } from "react-native";
+import { Alert, Pressable, StyleSheet, Text } from "react-native";
 import EscaneoScreen from "./screens/Escaneo";
 import NotificarScreen from "./screens/Notificar";
 import PerfilScreen from "./screens/Perfil";
@@ -126,12 +126,40 @@ const App = () => {
               <Stack.Screen
                 name="CreacionEncuestaPage"
                 component={CreacionEncuestaPage}
-                options={{
+                options={({ navigation }) => ({
                   headerShown: true,
                   headerTransparent: true,
                   headerTitle: "",
                   headerRight: headerRight,
-                }}
+                  headerLeft: () => (
+                    <Pressable
+                      onPress={() => {
+                        Alert.alert(
+                          "Seguro",
+                          "¿Estás seguro de que deseas salir de la creación de la encuesta?",
+                          [
+                            {
+                              text: "No",
+                              style: "cancel",
+                            },
+                            {
+                              text: "Sí",
+                              onPress: () =>
+                                navigation.replace("InicioProfesorPage"),
+                            },
+                          ],
+                          { cancelable: false }
+                        );
+                      }}
+                    >
+                      <Image
+                        style={{ width: 45, height: 45 }}
+                        source={require("./assets/atrasButton.png")}
+                      />
+                    </Pressable>
+                  ),
+                  animation: "slide_from_bottom",
+                })}
               ></Stack.Screen>
               <Stack.Screen
                 name="NotificacionesProfesorPage"
