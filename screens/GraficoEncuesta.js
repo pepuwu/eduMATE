@@ -10,7 +10,6 @@ import {
 import BaseScreen from "../components/BaseComponente";
 import { BarChart, PieChart } from "react-native-gifted-charts";
 import { useNavigation } from "@react-navigation/native";
-import { FontSize } from "../GlobalStyles";
 
 const GraficoEncuestaPage = () => {
   const navigation = useNavigation();
@@ -36,7 +35,6 @@ const GraficoEncuestaPage = () => {
       <View style={{ paddingTop: 90 }}>
         <View style={styles.outerCard}>
           <Text style={styles.headerText}>Detalle</Text>
-          <View style={styles.line} />
           <View style={styles.graficosContainer}>
             <Text style={styles.tituloGrafico}>Performance</Text>
             <PieChart data={pieData} innerRadius={0} radius={70} />
@@ -57,6 +55,7 @@ const GraficoEncuestaPage = () => {
             <Text style={styles.tituloGrafico}>Asistencia</Text>
             <ScrollView hotizontal style={{ width: "100%" }}>
               <BarChart
+                isAnimated
                 data={barData}
                 barWidth={50}
                 barBorderRadius={5}
@@ -78,7 +77,10 @@ const GraficoEncuestaPage = () => {
         </View>
         <View style={styles.botonContainer}>
           <TouchableOpacity
-            style={[styles.boton, { backgroundColor: "#1E90FF" }]}
+            style={[
+              styles.boton,
+              { backgroundColor: "#1E90FF", marginBottom: 20 },
+            ]}
             onPress={() => navigation.replace("InicioProfesorPage")}
           >
             <Text style={styles.botonText}>Guardar</Text>
@@ -98,26 +100,19 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     color: "#002499",
   },
-  line: {
-    height: 3,
-    backgroundColor: "#D9D9D990",
-    marginTop: 5,
-    marginHorizontal: "10%",
-    borderRadius: 1.5,
-  },
   outerCard: {
     backgroundColor: "#D9D9D990",
     borderRadius: 20,
-    padding: 20,
-    marginVertical: 10,
+    padding: 10,
+    marginTop: 10,
     marginHorizontal: 20,
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 5,
   },
   graficosContainer: {
     backgroundColor: "#201474",
     borderRadius: 15,
-    padding: 15,
+    padding: 10,
     marginVertical: 10,
     alignItems: "center",
     width: "90%",
@@ -160,7 +155,7 @@ const styles = StyleSheet.create({
   botonContainer: {
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 60,
+    padding: 5,
   },
   boton: {
     height: 50,
