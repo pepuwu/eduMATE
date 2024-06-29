@@ -38,7 +38,7 @@ const NotificacionesProfesorPage = () => {
               </Text>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate("GraficoEncuestaPage")}
+                onPress={() => navigation.replace("GraficoEncuestaPage")}
               >
                 <Text style={styles.buttonText}>VER RESULTADOS</Text>
               </TouchableOpacity>

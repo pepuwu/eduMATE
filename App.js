@@ -175,12 +175,25 @@ const App = () => {
               <Stack.Screen
                 name="GraficoEncuestaPage"
                 component={GraficoEncuestaPage}
-                options={{
+                options={({ navigation }) => ({
                   headerShown: true,
                   headerTransparent: true,
                   headerTitle: "",
                   headerRight: headerRight,
-                }}
+                  headerLeft: () => (
+                    <Pressable
+                      onPress={() => {
+                        navigation.replace("NotificacionesProfesorPage");
+                      }}
+                    >
+                      <Image
+                        style={{ width: 45, height: 45 }}
+                        source={require("./assets/atrasButton.png")}
+                      />
+                    </Pressable>
+                  ),
+                  animation: "slide_from_bottom",
+                })}
               ></Stack.Screen>
               <Stack.Screen
                 name="PerfilProfesorPage"
