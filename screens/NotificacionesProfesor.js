@@ -28,7 +28,7 @@ const NotificacionesProfesorPage = () => {
           <View style={styles.line} />
         </View>
         <View style={{ alignItems: "center", justifyContent: "space-between" }}>
-          <ScrollView style={{ width: "100%", height: "85%", marginTop: 8 }}>
+          <ScrollView style={{ width: "100%", height: "90%", marginTop: 8 }}>
             {materias.map((materia, index) => (
               <View key={index} style={styles.card}>
                 <Text style={styles.cardHeader}>{materia}</Text>
