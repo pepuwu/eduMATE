@@ -22,6 +22,7 @@ import InicioProfesorPage from "./screens/InicioProfesor";
 import CreacionEncuestaPage from "./screens/CreacionEncuestaPage";
 import NotificacionesProfesorPage from "./screens/NotificacionesProfesor";
 import PerfilProfesorPage from "./screens/PerfilProfesor";
+import GraficoEncuestaPage from "./screens/GraficoEncuesta";
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -164,6 +165,16 @@ const App = () => {
               <Stack.Screen
                 name="NotificacionesProfesorPage"
                 component={NotificacionesProfesorPage}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="GraficoEncuestaPage"
+                component={GraficoEncuestaPage}
                 options={{
                   headerShown: true,
                   headerTransparent: true,
