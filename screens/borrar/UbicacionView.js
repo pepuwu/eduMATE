@@ -12,8 +12,14 @@ import { useNavigation } from "@react-navigation/native";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
 import Property1DefaultImage2 from "../components/Property1DefaultImage2";
-import Button1 from "../components/Button1";
-import { Color, FontSize, FontFamily, Border, Padding } from "../GlobalStyles";
+import Button1 from "../../components/Button1";
+import {
+  Color,
+  FontSize,
+  FontFamily,
+  Border,
+  Padding,
+} from "../../GlobalStyles";
 
 const UbicacionView = () => {
   const navigation = useNavigation();

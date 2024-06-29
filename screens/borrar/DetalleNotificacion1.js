@@ -6,8 +6,8 @@ import DropDownPicker from "react-native-dropdown-picker";
 import Property1DefaultImage from "../components/Property1DefaultImage";
 import Property1DefaultImage1 from "../components/Property1DefaultImage1";
 import Property1DefaultImage2 from "../components/Property1DefaultImage2";
-import Button1 from "../components/Button1";
-import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
+import Button1 from "../../components/Button1";
+import { Border, Color, FontFamily, FontSize } from "../../GlobalStyles";
 
 const DetalleNotificacion1 = () => {
   const [frameDropdownOpen, setFrameDropdownOpen] = useState(false);

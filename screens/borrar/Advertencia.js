@@ -2,8 +2,8 @@ import * as React from "react";
 import { Image } from "expo-image";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Button1 from "../components/Button1";
-import { FontFamily, FontSize, Color, Border } from "../GlobalStyles";
+import Button1 from "../../components/Button1";
+import { FontFamily, FontSize, Color, Border } from "../../GlobalStyles";
 
 const Advertencia = () => {
   const navigation = useNavigation();

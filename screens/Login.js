@@ -43,18 +43,35 @@ const LoginScreen = () => {
             <TextInput
               label="Usuario"
               activeUnderlineColor="white"
-              style={{ backgroundColor: "#898989", height: 55 }}
+              style={{ backgroundColor: "#adadad", height: 55 }}
+              activeOutlineColor="#0d3873"
+              mode="outlined"
+              outlineColor="#adadad"
             />
             <TextInput
               label="Contraseña"
               secureTextEntry
               right={<TextInput.Icon name="eye" />}
-              activeUnderlineColor="white"
-              style={{ backgroundColor: "#898989", height: 55 }}
+              activeOutlineColor="#0d3873"
+              mode="outlined"
+              outlineColor="#adadad"
+              style={{
+                backgroundColor: "#adadad",
+                height: 55,
+                borderRadius: 10,
+              }}
             />
-            <Text style={{ alignSelf: "center", fontSize: 12, color: "white" }}>
-              ¿Olvidaste tu contraseña?
-            </Text>
+            <Pressable
+              onPress={() => {
+                navigation.replace("InicioProfesorPage");
+              }}
+            >
+              <Text
+                style={{ alignSelf: "center", fontSize: 12, color: "white" }}
+              >
+                ¿Olvidaste tu contraseña?
+              </Text>
+            </Pressable>
           </View>
           <Pressable
             onPress={() => {
