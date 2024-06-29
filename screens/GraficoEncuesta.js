@@ -4,12 +4,22 @@ import {
     Text,
     StyleSheet,
     ScrollView,
-    TouchableOpacity,
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
+import { BarChart } from "react-native-gifted-charts";
 
 
 const GraficoEncuestaPage = () => {
+    const data = [
+        { value: 50, label: 'Algebra' },
+        { value: 80, label: 'TIF' },
+        { value: 70, label: 'Programación 2' },
+        { value: 90, label: 'Sistemas de información' },
+        { value: 65, label: 'Cálculo' },
+        { value: 85, label: 'Desarrollo web' },
+        { value: 75, label: 'Química' },
+    ];
+
     return (
         <BaseScreen proviene={"notify"} alumno={false}>
             <View style={{ flex: 8, paddingTop: 90 }}>
@@ -17,6 +27,12 @@ const GraficoEncuestaPage = () => {
                     <View style={styles.outerCard}>
                         <Text style={styles.headerText}>Detalle</Text>
                         <View style={styles.line} />
+                        <BarChart
+                            data={data}
+                            barWidth={30}
+                            barBorderRadius={5}
+                            frontColor="#6a1b9a"
+                        />
 
                     </View>
                 </ScrollView>
@@ -42,7 +58,7 @@ const styles = StyleSheet.create({
         borderRadius: 1.5,
     },
     outerCard: {
-        backgroundColor: "#79abed", // Color E5E1DA con 50% de transparencia
+        backgroundColor: "#79abed",
         borderRadius: 20,
         padding: 20,
         marginVertical: 10,
