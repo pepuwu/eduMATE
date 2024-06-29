@@ -15,13 +15,13 @@ import { FontSize } from "../GlobalStyles";
 const GraficoEncuestaPage = () => {
   const navigation = useNavigation();
   const barData = [
-    { value: 50, label: "Algebra" },
-    { value: 80, label: "TIF" },
-    { value: 70, label: "Programación" },
-    { value: 90, label: "Sistemas de información" },
-    { value: 65, label: "Cálculo" },
-    { value: 85, label: "Desarrollo web" },
-    { value: 75, label: "Química" },
+    { value: 94, label: "29/02" },
+    { value: 93, label: "07/03" },
+    { value: 85, label: "14/03" },
+    { value: 80, label: "21/03" },
+    { value: 60, label: "28/03" },
+    { value: 65, label: "04/04" },
+    { value: 85, label: "11/04" },
   ];
 
   const pieData = [
