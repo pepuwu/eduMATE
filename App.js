@@ -22,6 +22,7 @@ import InicioProfesorPage from "./screens/InicioProfesor";
 import CreacionEncuestaPage from "./screens/CreacionEncuestaPage";
 import NotificacionesProfesorPage from "./screens/NotificacionesProfesor";
 import PerfilProfesorPage from "./screens/PerfilProfesor";
+import GraficoEncuestaPage from "./screens/GraficoEncuesta";
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -170,6 +171,29 @@ const App = () => {
                   headerTitle: "",
                   headerRight: headerRight,
                 }}
+              ></Stack.Screen>
+              <Stack.Screen
+                name="GraficoEncuestaPage"
+                component={GraficoEncuestaPage}
+                options={({ navigation }) => ({
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                  headerLeft: () => (
+                    <Pressable
+                      onPress={() => {
+                        navigation.replace("NotificacionesProfesorPage");
+                      }}
+                    >
+                      <Image
+                        style={{ width: 45, height: 45 }}
+                        source={require("./assets/atrasButton.png")}
+                      />
+                    </Pressable>
+                  ),
+                  animation: "slide_from_bottom",
+                })}
               ></Stack.Screen>
               <Stack.Screen
                 name="PerfilProfesorPage"

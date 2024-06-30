@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
+import { useNavigation } from "@react-navigation/native";
 
 const materias = [
   "Algebra",
@@ -20,6 +21,7 @@ const materias = [
 ];
 
 const NotificacionesProfesorPage = () => {
+  const navigation = useNavigation();
   return (
     <BaseScreen proviene={"notify"} alumno={false}>
       <View style={{ flex: 8, paddingTop: 90 }}>
@@ -36,9 +38,7 @@ const NotificacionesProfesorPage = () => {
               </Text>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() =>
-                  console.log("Deberia ir a graficos de encuestas")
-                }
+                onPress={() => navigation.replace("GraficoEncuestaPage")}
               >
                 <Text style={styles.buttonText}>VER RESULTADOS</Text>
               </TouchableOpacity>
