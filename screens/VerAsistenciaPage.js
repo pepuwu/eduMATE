@@ -11,28 +11,8 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 const VerAsistenciaPage = () => {
     const navigation = useNavigation();
     const route = useRoute();
-    const { materia, barData } = route.params || {};
+    const { materia } = route.params || {};
 
-    if (!materia || !barData) {
-        return (
-            <BaseScreen proviene={"notify"} alumno={false} visible={false}>
-                <View style={{ paddingTop: 90 }}>
-                    <Text style={styles.headerText}>Datos no disponibles</Text>
-                    <View style={styles.botonContainer}>
-                        <TouchableOpacity
-                            style={[
-                                styles.boton,
-                                { backgroundColor: "#1E90FF", marginBottom: 20 },
-                            ]}
-                            onPress={() => navigation.goBack()}
-                        >
-                            <Text style={styles.botonText}>Volver</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </BaseScreen>
-        );
-    }
 
     return (
         <BaseScreen proviene={"notify"} alumno={false} visible={false}>
