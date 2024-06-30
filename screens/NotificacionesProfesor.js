@@ -5,12 +5,11 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import { useNavigation } from "@react-navigation/native";
 
-const materias = [
+export const materias = [
   "Algebra",
   "TIF",
   "Programación 2",
@@ -38,7 +37,7 @@ const NotificacionesProfesorPage = () => {
               </Text>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.replace("GraficoEncuestaPage")}
+                onPress={() => navigation.replace("GraficoEncuestaPage", { materia })}
               >
                 <Text style={styles.buttonText}>VER RESULTADOS</Text>
               </TouchableOpacity>
