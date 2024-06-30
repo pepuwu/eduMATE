@@ -11,11 +11,6 @@ import { postPresente } from "../servicios/serviciosGenerales";
 import { useScanner } from "../ScannerContext";
 import * as Application from "expo-application";
 
-// import { Audio } from "expo-av";
-// import dingSound from "../assets/audio/ding.mp3";
-// import warningSound from "../assets/audio/warning.mp3";
-// import errorSound from "../assets/audio/error_1.mp3";
-
 const EscaneoScreen = () => {
   const [location, setLocation] = useState(null);
   const navigation = useNavigation();
@@ -23,6 +18,7 @@ const EscaneoScreen = () => {
   const [presente, isPresente] = useState(false);
   const [presenteStatus, setPresenteStatus] = useState(null);
   const [deviceId, setDeviceId] = useState(null);
+  const isScanningRef = useRef(false);
 
   useEffect(() => {
     const getPermisos = async () => {
@@ -53,6 +49,9 @@ const EscaneoScreen = () => {
   };
 
   const handleScan = async (data) => {
+    if (isScanningRef.current) return;
+
+    isScanningRef.current = true;
     setPresenteStatus("");
     console.log(location.coords.latitude, location.coords.longitude, deviceId);
     try {
@@ -77,6 +76,7 @@ const EscaneoScreen = () => {
       console.error("Error durante el scan:", error);
     } finally {
       setIsScanning(false);
+      isScanningRef.current = false;
     }
   };
 

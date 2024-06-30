@@ -1,7 +1,107 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
+
+const teacher1 = require("../assets/teacher1.png");
+const teacher2 = require("../assets/teacher2.png");
+const teacher3 = require("../assets/teacher3.png");
+
+const NotificacionNueva = ({ path }) => {
+  return (
+    <View style={styles.cardNoti}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          padding: 10,
+          justifyContent: "space-between",
+          width: "100%",
+        }}
+      >
+        <View
+          style={{
+            height: 68,
+            width: 68,
+            backgroundColor: "#3b87cb",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 50,
+          }}
+        >
+          <Image source={path} style={{ width: 66, height: 66 }}></Image>
+        </View>
+        <View style={{ alignItems: "flex-start", width: "80%" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "95%",
+            }}
+          >
+            <Text
+              style={{
+                color: "#0d3873",
+                paddingTop: 10,
+                marginBottom: 5,
+                fontSize: 15,
+              }}
+            >
+              JUAN CARLOS - ÁLGEBRA
+            </Text>
+            <Text style={{ fontSize: 18, fontWeight: "bold" }}>X</Text>
+          </View>
+          <Text style={styles.titleNoti}>¿CÓMO ESTUVO SU CLASE?</Text>
+        </View>
+      </View>
+      <View
+        style={{
+          width: "100%",
+          paddingHorizontal: 15,
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <View
+          style={{
+            width: "70%",
+            justifyContent: "center",
+            alignItems: "flex-start",
+          }}
+        >
+          <Text style={{ fontWeight: "500" }}>COMPLETA LA ENCUESTA: </Text>
+          <Text style={{ fontWeight: "400", fontSize: 12 }}>
+            Sus respuestas nos ayudan a mejorar las clases
+          </Text>
+        </View>
+        <TouchableOpacity
+          style={{
+            borderRadius: 50,
+            height: 50,
+            width: 50,
+            backgroundColor: "#0169bf",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: 10,
+          }}
+        >
+          <Text style={{ color: "white", fontWeight: "800", fontSize: 15 }}>
+            {">"}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 const NotificarScreen = () => {
   return (
@@ -14,28 +114,9 @@ const NotificarScreen = () => {
             alignItems: "center",
           }}
         >
-          <View style={styles.cardNoti}>
-            <Text style={styles.titleNoti}>
-              ¿CÓMO ESTUVO SU CLASE DE FÍSICA II?
-            </Text>
-            <Text style={{ paddingBottom: 5, fontWeight: 300, fontSize: 12 }}>
-              Tu opinión nos importa.
-            </Text>
-            <View style={styles.encuestaButton}>
-              <Text style={styles.buttonText}>Completa la encuesta</Text>
-            </View>
-          </View>
-          <View style={styles.cardNoti}>
-            <Text style={styles.titleNoti}>
-              ¿CÓMO ESTUVO SU CLASE DE ÁLGEBRA?
-            </Text>
-            <Text style={{ paddingBottom: 5, fontWeight: 300, fontSize: 12 }}>
-              Tu opinión nos importa.
-            </Text>
-            <View style={styles.encuestaButton}>
-              <Text style={styles.buttonText}>Completa la encuesta</Text>
-            </View>
-          </View>
+          <NotificacionNueva path={teacher1}></NotificacionNueva>
+          <NotificacionNueva path={teacher2}></NotificacionNueva>
+          <NotificacionNueva path={teacher3}></NotificacionNueva>
         </View>
       </ScrollView>
     </BaseScreen>
@@ -48,18 +129,16 @@ const styles = StyleSheet.create({
   cardNoti: {
     borderRadius: Border.br_3xl,
     backgroundColor: Color.colorGainsboro_200,
-    width: 380,
-    height: 120,
+    width: 400,
+    height: 160,
     alignItems: "center",
     flexDirection: "column",
-    justifyContent: "space-between",
     marginTop: 8,
   },
   titleNoti: {
-    fontSize: FontSize.size_base,
+    fontSize: 18,
     fontFamily: FontFamily.urbanistBold,
-    fontWeight: "700",
-    paddingTop: 10,
+    fontWeight: "bold",
   },
   encuestaButton: {
     height: 32,
