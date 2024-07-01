@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,12 +10,26 @@ import {
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
+import { useNavigation } from "@react-navigation/core";
 
 const teacher1 = require("../assets/teacher1.png");
 const teacher2 = require("../assets/teacher2.png");
 const teacher3 = require("../assets/teacher3.png");
 
-const NotificacionNueva = ({ path }) => {
+const notificacionesMock = [
+  { clase: "ÁLGEBRA", profesor: "Juan Carlos", path: teacher1 },
+  { clase: "PROGRAMACIÓN 1", profesor: "Ana María", path: teacher2 },
+  { clase: "TIF", profesor: "Carlos Estevez", path: teacher3 },
+];
+
+const NotificacionNueva = ({
+  clase,
+  profesor,
+  path,
+  removeFunction,
+  index,
+}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.cardNoti}>
       <View
@@ -56,9 +70,11 @@ const NotificacionNueva = ({ path }) => {
                 fontSize: 15,
               }}
             >
-              JUAN CARLOS - ÁLGEBRA
+              {profesor} - {clase}
             </Text>
-            <Text style={{ fontSize: 18, fontWeight: "bold" }}>X</Text>
+            <Pressable onPress={removeFunction}>
+              <Text style={{ fontSize: 18, fontWeight: "bold" }}>X</Text>
+            </Pressable>
           </View>
           <Text style={styles.titleNoti}>¿CÓMO ESTUVO SU CLASE?</Text>
         </View>
@@ -84,6 +100,9 @@ const NotificacionNueva = ({ path }) => {
           </Text>
         </View>
         <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("RespuestaPage", { index, removeFunction })
+          }
           style={{
             borderRadius: 50,
             height: 50,
@@ -94,9 +113,10 @@ const NotificacionNueva = ({ path }) => {
             marginTop: 10,
           }}
         >
-          <Text style={{ color: "white", fontWeight: "800", fontSize: 15 }}>
-            {">"}
-          </Text>
+          <Image
+            source={require("../assets/right.png")}
+            style={{ height: 25, width: 25, marginLeft: 4 }}
+          ></Image>
         </TouchableOpacity>
       </View>
     </View>
@@ -104,6 +124,15 @@ const NotificacionNueva = ({ path }) => {
 };
 
 const NotificarScreen = () => {
+  const [notificaciones, setNotificaciones] = useState(notificacionesMock);
+
+  const remove = (index) => {
+    let nuevasNotificaciones = notificaciones.filter(
+      (notificacion, i) => i !== index
+    );
+    setNotificaciones(nuevasNotificaciones);
+  };
+
   return (
     <BaseScreen proviene={"notify"}>
       <View style={{ height: 100 }}></View>
@@ -114,9 +143,23 @@ const NotificarScreen = () => {
             alignItems: "center",
           }}
         >
-          <NotificacionNueva path={teacher1}></NotificacionNueva>
-          <NotificacionNueva path={teacher2}></NotificacionNueva>
-          <NotificacionNueva path={teacher3}></NotificacionNueva>
+          {notificaciones.map((notificacion, index) => (
+            <NotificacionNueva
+              clase={notificacion.clase}
+              profesor={notificacion.profesor}
+              path={notificacion.path}
+              key={index}
+              index={index}
+              removeFunction={() => remove(index)}
+            />
+          ))}
+          {notificaciones.length === 0 && (
+            <Text
+              style={{ paddingTop: 300, color: "white", fontWeight: "700" }}
+            >
+              No hay notificaciones para mostrar.
+            </Text>
+          )}
         </View>
       </ScrollView>
     </BaseScreen>
