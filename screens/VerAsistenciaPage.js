@@ -12,96 +12,95 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import BaseScreen from "../components/BaseComponente";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { alumnos } from "./mock/asistenciaMock"; // Asegúrate de tener la ruta correcta
+import { alumnos } from "./mock/asistenciaMock";
 import { barData } from "./GraficoEncuesta";
 
-// Importa las imágenes
 import bienTick from '../assets/bienTick.png';
 import errorTick from '../assets/errorTick.png';
-import maleImage from '../assets/teacher1.png';
-import femaleImage from '../assets/teacher2.png';
+import imagenMasculino from '../assets/teacher1.png';
+import imagenFemenino from '../assets/teacher2.png';
 
 const VerAsistenciaPage = () => {
     const navigation = useNavigation();
     const route = useRoute();
     const { materia } = route.params || {};
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedStudents, setSelectedStudents] = useState([]);
-    const [pickerVisible, setPickerVisible] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
+    const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
+    const [alumnosSeleccionados, setAlumnosSeleccionados] = useState([]);
+    const [selectorVisible, setSelectorVisible] = useState(false);
+    const [consultaBusqueda, setConsultaBusqueda] = useState('');
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-        setSelectedStudents(alumnos[date] || []);
-        setPickerVisible(false);
+    const handleDateChange = (fecha) => {
+        setFechaSeleccionada(fecha);
+        setAlumnosSeleccionados(alumnos[fecha] || []);
+        setSelectorVisible(false);
     };
 
-    const openPicker = () => {
-        setPickerVisible(true);
+    const abrirSelector = () => {
+        setSelectorVisible(true);
     };
 
-    const handleSearch = (query) => {
-        setSearchQuery(query);
+    const handleSearch = (consulta) => {
+        setConsultaBusqueda(consulta);
     };
 
-    const filteredStudents = selectedStudents.filter(student =>
-        student.nombre.toLowerCase().includes(searchQuery.toLowerCase())
+    const alumnosFiltrados = alumnosSeleccionados.filter(alumno =>
+        alumno.nombre.toLowerCase().includes(consultaBusqueda.toLowerCase())
     );
 
     return (
         <BaseScreen proviene={"notify"} alumno={false} visible={false}>
-            <View style={styles.container}>
-                {!selectedDate && (
-                    <View style={styles.noDateContainer}>
-                        <Text style={styles.textoNoFecha}>No tiene fecha seleccionada</Text>
+            <View style={styles.contenedor}>
+                {!fechaSeleccionada && (
+                    <View style={styles.contenedorSinFecha}>
+                        <Text style={styles.textoSinFecha}>No tiene fecha seleccionada</Text>
                         <TouchableOpacity
                             style={[
                                 styles.boton,
                                 { backgroundColor: "#1E90FF", marginTop: 20 },
                             ]}
-                            onPress={openPicker}
+                            onPress={abrirSelector}
                         >
-                            <Text style={styles.botonText}>Seleccionar Fecha</Text>
+                            <Text style={styles.textoBoton}>Seleccionar Fecha</Text>
                         </TouchableOpacity>
                     </View>
                 )}
-                {selectedDate && (
+                {fechaSeleccionada && (
                     <>
                         <View>
-                            <View style={styles.topContainer}>
+                            <View style={styles.contenedorSuperior}>
                                 <TouchableOpacity
                                     style={[
                                         styles.boton,
                                         { backgroundColor: "#1E90FF" },
                                     ]}
-                                    onPress={openPicker}
+                                    onPress={abrirSelector}
                                 >
-                                    <Text style={styles.botonText}>Seleccionar Fecha</Text>
+                                    <Text style={styles.textoBoton}>Seleccionar Fecha</Text>
                                 </TouchableOpacity>
                                 <TextInput
-                                    style={styles.searchInput}
+                                    style={styles.entradaBusqueda}
                                     placeholder="Buscar alumno"
-                                    value={searchQuery}
+                                    value={consultaBusqueda}
                                     onChangeText={handleSearch}
                                 />
                             </View>
                             <Text style={styles.subtituloFecha}>
-                                {materia} - {selectedDate}
+                                {materia} - {fechaSeleccionada}
                             </Text>
                         </View>
-                        <View style={styles.contentContainer}>
-                            {filteredStudents.length > 0 && (
+                        <View style={styles.contenedorContenido}>
+                            {alumnosFiltrados.length > 0 && (
                                 <ScrollView style={styles.scrollView}>
-                                    {filteredStudents.map((student, index) => (
-                                        <View key={index} style={styles.studentCard}>
+                                    {alumnosFiltrados.map((alumno, index) => (
+                                        <View key={index} style={styles.tarjetaAlumno}>
                                             <Image
-                                                source={student.genero === "masculino" ? maleImage : femaleImage}
-                                                style={styles.studentImage}
+                                                source={alumno.genero === "masculino" ? imagenMasculino : imagenFemenino}
+                                                style={styles.imagenAlumno}
                                             />
-                                            <Text style={styles.nombreAlumno}>{student.nombre}</Text>
+                                            <Text style={styles.nombreAlumno}>{alumno.nombre}</Text>
                                             <Image
-                                                source={student.estado === "presente" ? bienTick : errorTick}
-                                                style={styles.estadoImagen}
+                                                source={alumno.estado === "presente" ? bienTick : errorTick}
+                                                style={styles.imagenEstado}
                                             />
                                         </View>
                                     ))}
@@ -112,16 +111,16 @@ const VerAsistenciaPage = () => {
                 )}
                 <Modal
                     transparent={true}
-                    visible={pickerVisible}
+                    visible={selectorVisible}
                     animationType="slide"
                 >
-                    <View style={styles.modalContainer}>
-                        <View style={styles.pickerContainer}>
+                    <View style={styles.contenedorModal}>
+                        <View style={styles.contenedorSelector}>
                             <Picker
-                                selectedValue={selectedDate}
-                                style={styles.picker}
+                                selectedValue={fechaSeleccionada}
+                                style={styles.selector}
                                 onValueChange={(itemValue) => handleDateChange(itemValue)}
-                                itemStyle={styles.pickerItem}
+                                itemStyle={styles.itemSelector}
                             >
                                 {barData.map((item, index) => (
                                     <Picker.Item key={index} label={item.label} value={item.label} />
@@ -132,14 +131,14 @@ const VerAsistenciaPage = () => {
                                     styles.boton,
                                     { backgroundColor: "#1E90FF", marginTop: 20 },
                                 ]}
-                                onPress={() => setPickerVisible(false)}
+                                onPress={() => setSelectorVisible(false)}
                             >
-                                <Text style={styles.botonText}>Cerrar</Text>
+                                <Text style={styles.textoBoton}>Cerrar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </Modal>
-                <View style={styles.botonContainer}>
+                <View style={styles.contenedorBoton}>
                     <TouchableOpacity
                         style={[
                             styles.boton,
@@ -147,7 +146,7 @@ const VerAsistenciaPage = () => {
                         ]}
                         onPress={() => navigation.replace("GraficoEncuestaPage", { materia })}
                     >
-                        <Text style={styles.botonText}>Volver</Text>
+                        <Text style={styles.textoBoton}>Volver</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -158,11 +157,11 @@ const VerAsistenciaPage = () => {
 export default VerAsistenciaPage;
 
 const styles = StyleSheet.create({
-    container: {
+    contenedor: {
         paddingTop: 70,
         flex: 1,
     },
-    topContainer: {
+    contenedorSuperior: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -170,33 +169,33 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         marginBottom: 20,
     },
-    noDateContainer: {
+    contenedorSinFecha: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    modalContainer: {
+    contenedorModal: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
-    pickerContainer: {
+    contenedorSelector: {
         backgroundColor: '#92cfed',
         borderRadius: 10,
         width: '90%',
         padding: 20,
         alignItems: 'center',
     },
-    picker: {
+    selector: {
         height: 200,
         width: '100%',
     },
-    pickerItem: {
+    itemSelector: {
         color: '#002499',
         fontWeight: 'bold',
     },
-    searchInput: {
+    entradaBusqueda: {
         height: 40,
         borderColor: '#d3d3d3',
         borderWidth: 1,
@@ -212,12 +211,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 10,
     },
-    contentContainer: {
+    contenedorContenido: {
         flex: 1,
         alignItems: 'center',
         paddingHorizontal: 10,
     },
-    textoNoFecha: {
+    textoSinFecha: {
         fontSize: 24,
         fontWeight: 'bold',
         color: '#002499',
@@ -228,21 +227,21 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 20,
     },
-    studentCard: {
+    tarjetaAlumno: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20, // Altura aumentada
+        padding: 20,
         marginVertical: 5,
-        borderWidth: 2, // Bordes más gruesos
+        borderWidth: 2,
         borderRadius: 5,
-        borderColor: 'rgba(0, 36, 153, 0.7)', // Borde azul oscuro
-        backgroundColor: 'rgba(173, 216, 230, 0.5)', // Fondo con transparencia azul claro
+        borderColor: 'rgba(0, 36, 153, 0.7)',
+        backgroundColor: 'rgba(173, 216, 230, 0.5)',
         width: '100%',
     },
-    studentImage: {
-        width: 40,
-        height: 40,
+    imagenAlumno: {
+        width: 50,
+        height: 50,
         marginRight: 10,
     },
     nombreAlumno: {
@@ -251,11 +250,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         flex: 1,
     },
-    estadoImagen: {
-        width: 30, // Tamaño aumentado
-        height: 30, // Tamaño aumentado
+    imagenEstado: {
+        width: 30,
+        height: 30,
     },
-    botonContainer: {
+    contenedorBoton: {
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 50,
@@ -270,12 +269,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginHorizontal: 10,
     },
-    botonText: {
+    textoBoton: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 15,
     },
-    headerText: {
+    textoHeader: {
         alignSelf: 'center',
         fontSize: 35,
         fontWeight: '800',
