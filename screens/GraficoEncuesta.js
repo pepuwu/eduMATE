@@ -10,20 +10,20 @@ import BaseScreen from "../components/BaseComponente";
 import { BarChart, PieChart } from "react-native-gifted-charts";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
+export const barData = [
+  { value: 94, label: "29/02" },
+  { value: 93, label: "07/03" },
+  { value: 85, label: "14/03" },
+  { value: 80, label: "21/03" },
+  { value: 60, label: "28/03" },
+  { value: 65, label: "04/04" },
+  { value: 85, label: "11/04" },
+];
+
 const GraficoEncuestaPage = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { materia } = route.params;
-
-  const barData = [
-    { value: 94, label: "29/02" },
-    { value: 93, label: "07/03" },
-    { value: 85, label: "14/03" },
-    { value: 80, label: "21/03" },
-    { value: 60, label: "28/03" },
-    { value: 65, label: "04/04" },
-    { value: 85, label: "11/04" },
-  ];
 
   const pieData = [
     { value: 47, color: "#3498db", label: "Excelente" },
