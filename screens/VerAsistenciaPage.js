@@ -7,12 +7,17 @@ import {
     ScrollView,
     Modal,
     TextInput,
+    Image,
 } from "react-native";
 import { Picker } from '@react-native-picker/picker';
 import BaseScreen from "../components/BaseComponente";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { alumnos } from "./mock/asistenciaMock"; // Asegúrate de tener la ruta correcta
 import { barData } from "./GraficoEncuesta";
+
+// Importa las imágenes
+import bienTick from '../assets/bienTick.png';
+import errorTick from '../assets/errorTick.png';
 
 const VerAsistenciaPage = () => {
     const navigation = useNavigation();
@@ -78,7 +83,7 @@ const VerAsistenciaPage = () => {
                                     onChangeText={handleSearch}
                                 />
                             </View>
-                            <Text style={styles.subHeaderText}>
+                            <Text style={styles.subtituloFecha}>
                                 {materia} - {selectedDate}
                             </Text>
                         </View>
@@ -88,9 +93,10 @@ const VerAsistenciaPage = () => {
                                     {filteredStudents.map((student, index) => (
                                         <View key={index} style={styles.studentCard}>
                                             <Text style={styles.nombreAlumno}>{student.nombre}</Text>
-                                            <Text style={styles.estadoAlumno}>
-                                                {student.estado === "presente" ? "✓" : "✗"}
-                                            </Text>
+                                            <Image
+                                                source={student.estado === "presente" ? bienTick : errorTick}
+                                                style={styles.estadoImagen}
+                                            />
                                         </View>
                                     ))}
                                 </ScrollView>
@@ -193,11 +199,12 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 10,
     },
-    subHeaderText: {
+    subtituloFecha: {
         fontSize: 20,
         color: '#002499',
         textAlign: 'center',
         fontWeight: 'bold',
+        marginTop: 10,
     },
     contentContainer: {
         flex: 1,
@@ -219,12 +226,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 10,
+        padding: 20, // Altura aumentada
         marginVertical: 5,
-        borderWidth: 1,
+        borderWidth: 2, // Bordes más gruesos
         borderRadius: 5,
-        borderColor: '#d3d3d3',
-        backgroundColor: '#fff',
+        borderColor: 'rgba(0, 36, 153, 0.7)', // Borde azul oscuro
+        backgroundColor: 'rgba(173, 216, 230, 0.5)', // Fondo con transparencia azul claro
         width: '100%',
     },
     nombreAlumno: {
@@ -232,10 +239,9 @@ const styles = StyleSheet.create({
         color: '#002499',
         fontWeight: 'bold',
     },
-    estadoAlumno: {
-        fontSize: 16,
-        color: '#002499',
-        fontWeight: 'bold',
+    estadoImagen: {
+        width: 20,
+        height: 20,
     },
     botonContainer: {
         justifyContent: 'center',
