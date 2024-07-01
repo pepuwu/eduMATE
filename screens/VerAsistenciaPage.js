@@ -18,6 +18,8 @@ import { barData } from "./GraficoEncuesta";
 // Importa las imágenes
 import bienTick from '../assets/bienTick.png';
 import errorTick from '../assets/errorTick.png';
+import maleImage from '../assets/teacher1.png';
+import femaleImage from '../assets/teacher2.png';
 
 const VerAsistenciaPage = () => {
     const navigation = useNavigation();
@@ -92,6 +94,10 @@ const VerAsistenciaPage = () => {
                                 <ScrollView style={styles.scrollView}>
                                     {filteredStudents.map((student, index) => (
                                         <View key={index} style={styles.studentCard}>
+                                            <Image
+                                                source={student.genero === "masculino" ? maleImage : femaleImage}
+                                                style={styles.studentImage}
+                                            />
                                             <Text style={styles.nombreAlumno}>{student.nombre}</Text>
                                             <Image
                                                 source={student.estado === "presente" ? bienTick : errorTick}
@@ -234,14 +240,20 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(173, 216, 230, 0.5)', // Fondo con transparencia azul claro
         width: '100%',
     },
+    studentImage: {
+        width: 40,
+        height: 40,
+        marginRight: 10,
+    },
     nombreAlumno: {
         fontSize: 16,
         color: '#002499',
         fontWeight: 'bold',
+        flex: 1,
     },
     estadoImagen: {
-        width: 20,
-        height: 20,
+        width: 30, // Tamaño aumentado
+        height: 30, // Tamaño aumentado
     },
     botonContainer: {
         justifyContent: 'center',
