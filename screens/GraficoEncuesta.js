@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
-  Pressable,
   TouchableOpacity,
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import { BarChart, PieChart } from "react-native-gifted-charts";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+export const barData = [
+  { value: 94, label: "29/02" },
+  { value: 93, label: "07/03" },
+  { value: 85, label: "14/03" },
+  { value: 80, label: "21/03" },
+  { value: 60, label: "28/03" },
+  { value: 65, label: "04/04" },
+  { value: 85, label: "11/04" },
+];
 
 const GraficoEncuestaPage = () => {
   const navigation = useNavigation();
-  const barData = [
-    { value: 94, label: "29/02" },
-    { value: 93, label: "07/03" },
-    { value: 85, label: "14/03" },
-    { value: 80, label: "21/03" },
-    { value: 60, label: "28/03" },
-    { value: 65, label: "04/04" },
-    { value: 85, label: "11/04" },
-  ];
+  const route = useRoute();
+  const { materia } = route.params;
 
   const pieData = [
     { value: 47, color: "#3498db", label: "Excelente" },
@@ -34,7 +36,7 @@ const GraficoEncuestaPage = () => {
     <BaseScreen proviene={"notify"} alumno={false} visible={false}>
       <View style={{ paddingTop: 90 }}>
         <View style={styles.outerCard}>
-          <Text style={styles.headerText}>Detalle</Text>
+          <Text style={styles.headerText}>Detalle de {materia}</Text>
           <View style={styles.graficosContainer}>
             <Text style={styles.tituloGrafico}>Performance</Text>
             <PieChart data={pieData} innerRadius={0} radius={70} />
@@ -53,7 +55,7 @@ const GraficoEncuestaPage = () => {
           </View>
           <View style={styles.graficosContainer}>
             <Text style={styles.tituloGrafico}>Asistencia</Text>
-            <ScrollView hotizontal style={{ width: "100%" }}>
+            <ScrollView horizontal style={{ width: "100%" }}>
               <BarChart
                 isAnimated
                 data={barData}
@@ -84,6 +86,17 @@ const GraficoEncuestaPage = () => {
             onPress={() => navigation.replace("InicioProfesorPage")}
           >
             <Text style={styles.botonText}>Guardar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.boton,
+              { backgroundColor: "#1E90FF", marginBottom: 20 },
+            ]}
+            onPress={() =>
+              navigation.replace("VerAsistenciaPage", { materia, barData })
+            }
+          >
+            <Text style={styles.botonText}>Ver asistencias</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -156,6 +169,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 5,
+    flexDirection: "row",
   },
   boton: {
     height: 50,
@@ -163,6 +177,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
+    marginHorizontal: 10,
   },
   botonText: {
     color: "white",

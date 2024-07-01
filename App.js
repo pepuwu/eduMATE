@@ -23,7 +23,9 @@ import CreacionEncuestaPage from "./screens/CreacionEncuestaPage";
 import NotificacionesProfesorPage from "./screens/NotificacionesProfesor";
 import PerfilProfesorPage from "./screens/PerfilProfesor";
 import GraficoEncuestaPage from "./screens/GraficoEncuesta";
+import VerAsistenciaPage from "./screens/VerAsistenciaPage";
 import RespuestaPage from "./screens/RespuestaEncuestaPage";
+
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -207,10 +209,19 @@ const App = () => {
                 }}
               ></Stack.Screen>
               <Stack.Screen
+                name="VerAsistenciaPage"
+                component={VerAsistenciaPage}
+                options={{
+                  headerShown: true,
+                  headerTransparent: true,
+                  headerTitle: "",
+                  headerRight: headerRight,
+                }}
+              ></Stack.Screen>
+              <Stack.Screen 
                 name="RespuestaPage"
                 component={RespuestaPage}
-                options={{ presentation: "modal", headerTitle: "Responder" }}
-              ></Stack.Screen>
+                options={{ presentation: "modal", headerTitle: "Responder" }} />
             </Stack.Navigator>
           </NavigationContainer>
         </ScannerProvider>
