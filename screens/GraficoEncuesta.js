@@ -38,7 +38,6 @@ const GraficoEncuestaPage = () => {
   const handleGuardar = async () => {
     const wb = XLSX.utils.book_new();
 
-    // Datos para la hoja "Calidad de contenido"
     const wsDataPie = [
       ["Tipo", "Valor", "Etiqueta"],
       ...pieData.map(item => ["Pie", item.value, item.label])
@@ -46,7 +45,6 @@ const GraficoEncuestaPage = () => {
     const wsPie = XLSX.utils.aoa_to_sheet(wsDataPie);
     XLSX.utils.book_append_sheet(wb, wsPie, "Calidad de contenido");
 
-    // Datos para la hoja "Asistencias"
     const wsDataBar = [
       ["Tipo", "Valor", "Etiqueta"],
       ...barData.map(item => ["Bar", item.value, item.label])
@@ -68,7 +66,6 @@ const GraficoEncuestaPage = () => {
 
     await Sharing.shareAsync(fileUri);
 
-    // Navegar de vuelta a la página de inicio después de guardar y compartir
     navigation.replace("InicioProfesorPage");
   };
 
