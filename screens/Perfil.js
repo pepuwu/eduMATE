@@ -27,7 +27,7 @@ const PerfilScreen = () => {
         ></Image>
         <View style={styles.alumnoInformacionContainer}>
           <Text style={styles.datoEscolarColor}>Nombre</Text>
-          <Text style={styles.infoAlumnoColor}>Juan Remiro</Text>
+          <Text style={styles.infoAlumnoColor}>Juan Esteban</Text>
           <Text style={styles.datoEscolarColor}>Legajo</Text>
           <Text style={styles.infoAlumnoColor}>1155993</Text>
           <Text style={styles.datoEscolarColor}>Email</Text>
