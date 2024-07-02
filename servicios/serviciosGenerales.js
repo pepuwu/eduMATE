@@ -18,3 +18,12 @@ export const postPresente = async (
     return error.response.status;
   }
 };
+
+export const getPresentes = async () => {
+  try {
+    const response = await api.get("/edumate/verpresentes");
+    return response.data;
+  } catch (error) {
+    return error.response.status;
+  }
+};

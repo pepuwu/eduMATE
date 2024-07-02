@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -17,21 +17,48 @@ import { barData } from "./GraficoEncuesta";
 
 import bienTick from "../assets/bienTick.png";
 import errorTick from "../assets/errorTick.png";
-import imagenMasculino from "../assets/teacher1.png";
-import imagenFemenino from "../assets/teacher2.png";
+import imagenMasculino from "../assets/alumno.png";
+import imagenFemenino from "../assets/alumna.png";
+import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
+import { getPresentes } from "../servicios/serviciosGenerales";
+
+const keys = Object.keys(alumnos);
+
+const fechaClaseMapper = (fecha) => {
+  return keys.indexOf(fecha);
+};
 
 const VerAsistenciaPage = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { materia } = route.params || {};
   const [fechaSeleccionada, setFechaSeleccionada] = useState(null);
-  const [alumnosSeleccionados, setAlumnosSeleccionados] = useState([]);
   const [selectorVisible, setSelectorVisible] = useState(false);
   const [consultaBusqueda, setConsultaBusqueda] = useState("");
+  const [alumnosSeleccionados, setAlumnosSeleccionados] = useState([]);
+  const [presentesTotales, setPresentesTotales] = useState(null);
+  const [alumnosPresentes, setAlumnosPresentes] = useState(null);
+
+  useEffect(() => {
+    const fetchPresentes = async () => {
+      const presentes = await getPresentes();
+      setPresentesTotales(presentes);
+    };
+    fetchPresentes();
+  }, []);
+
+  const seleccionarAlumnosPresenteClase = (fecha) => {
+    const idClase = fechaClaseMapper(fecha) + 1;
+    let alumnosPresentes = presentesTotales.filter(
+      (presente) => presente.idClase === idClase
+    );
+    return alumnosPresentes;
+  };
 
   const handleDateChange = (fecha) => {
     setFechaSeleccionada(fecha);
     setAlumnosSeleccionados(alumnos[fecha] || []);
+    setAlumnosPresentes(seleccionarAlumnosPresenteClase(fecha));
     setSelectorVisible(false);
   };
 
@@ -41,6 +68,10 @@ const VerAsistenciaPage = () => {
 
   const handleSearch = (consulta) => {
     setConsultaBusqueda(consulta);
+  };
+
+  const isPresente = (legajo) => {
+    return alumnosPresentes.some((alumno) => alumno.alumno.legajo === legajo);
   };
 
   const alumnosFiltrados = alumnosSeleccionados.filter((alumno) =>
@@ -103,7 +134,7 @@ const VerAsistenciaPage = () => {
                       <Text style={styles.nombreAlumno}>{alumno.nombre}</Text>
                       <Image
                         source={
-                          alumno.estado === "presente" ? bienTick : errorTick
+                          isPresente(alumno.legajo) ? bienTick : errorTick
                         }
                         style={styles.imagenEstado}
                       />

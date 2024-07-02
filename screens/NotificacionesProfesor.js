@@ -10,7 +10,7 @@ import BaseScreen from "../components/BaseComponente";
 import { useNavigation } from "@react-navigation/native";
 
 export const materias = [
-  "Algebra",
+  "Álgebra",
   "TIF",
   "Programación 2",
   "Sistemas de información",
@@ -25,7 +25,7 @@ const NotificacionesProfesorPage = () => {
     <BaseScreen proviene={"notify"} alumno={false}>
       <View style={{ flex: 8, paddingTop: 90 }}>
         <View>
-          <Text style={styles.headerText}>RESPUESTAS</Text>
+          <Text style={styles.headerText}>INFORMACIÓN</Text>
           <View style={styles.line} />
         </View>
         <ScrollView style={{ width: "100%", marginTop: 10 }}>
@@ -33,11 +33,14 @@ const NotificacionesProfesorPage = () => {
             <View key={index} style={styles.card}>
               <Text style={styles.cardHeader}>{materia}</Text>
               <Text style={styles.cardText}>
-                Estos resultados son de la encuesta realizada para {materia}
+                Información acerca de la asistencia y resultados de la encuesta
+                realizada para {materia}
               </Text>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.replace("GraficoEncuestaPage", { materia })}
+                onPress={() =>
+                  navigation.replace("GraficoEncuestaPage", { materia })
+                }
               >
                 <Text style={styles.buttonText}>VER RESULTADOS</Text>
               </TouchableOpacity>
