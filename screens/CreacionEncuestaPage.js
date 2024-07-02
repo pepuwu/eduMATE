@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
 } from "react-native";
 import BaseScreen from "../components/BaseComponente";
 import SelectDropdown from "react-native-select-dropdown";
@@ -90,6 +91,11 @@ const CreacionEncuestaPage = () => {
   };
   const handleEliminar = (index) => {
     setPreguntas(preguntas.filter((_, i) => i !== index));
+  };
+
+  const handleAceptar = () => {
+    navigation.navigate("InicioProfesorPage");
+    Alert.alert("Encuesta creada");
   };
 
   return (
@@ -191,7 +197,7 @@ const CreacionEncuestaPage = () => {
                 }}
                 onPressIn={() => setIsButton2Pressed(true)}
                 onPressOut={() => setIsButton2Pressed(false)}
-                onPress={() => navigation.replace("InicioProfesorPage")}
+                onPress={handleAceptar}
               >
                 <Text
                   style={{ color: "white", fontWeight: "bold", fontSize: 15 }}

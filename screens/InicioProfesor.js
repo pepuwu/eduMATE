@@ -28,7 +28,6 @@ const InicioProfesorPage = () => {
           <Text style={styles.bienvenida}>{`¡Bienvenido, `}</Text>
           <Text style={styles.nombre}>Jorge!</Text>
         </Text>
-        <Text style={styles.materia}>Estás en Álgebra - Aula 1</Text>
       </View>
     </BaseScreen>
   );

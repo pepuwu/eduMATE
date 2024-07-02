@@ -9,6 +9,9 @@ import {
 import BaseScreen from "../components/BaseComponente";
 import { BarChart, PieChart } from "react-native-gifted-charts";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import XLSX from "xlsx";
+import * as FileSystem from 'expo-file-system';
+import * as Sharing from 'expo-sharing';
 
 export const barData = [
   { value: 94, label: "29/02" },
@@ -31,6 +34,40 @@ const GraficoEncuestaPage = () => {
     { value: 40, color: "#1abc9c", label: "Bien" },
     { value: 3, color: "#e74c3c", label: "Mal" },
   ];
+
+  const handleGuardar = async () => {
+    const wb = XLSX.utils.book_new();
+
+    const wsDataPie = [
+      ["Tipo", "Valor", "Etiqueta"],
+      ...pieData.map(item => ["Pie", item.value, item.label])
+    ];
+    const wsPie = XLSX.utils.aoa_to_sheet(wsDataPie);
+    XLSX.utils.book_append_sheet(wb, wsPie, "Calidad de contenido");
+
+    const wsDataBar = [
+      ["Tipo", "Valor", "Etiqueta"],
+      ...barData.map(item => ["Bar", item.value, item.label])
+    ];
+    const wsBar = XLSX.utils.aoa_to_sheet(wsDataBar);
+    XLSX.utils.book_append_sheet(wb, wsBar, "Asistencias");
+
+    const wbout = XLSX.write(wb, { type: "binary", bookType: "xlsx" });
+
+    const buf = new ArrayBuffer(wbout.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i !== wbout.length; ++i) view[i] = wbout.charCodeAt(i) & 0xFF;
+
+    const date = new Date().toISOString().split('T')[0];
+    const fileName = `${materia}-graficDetails-${date}.xlsx`;
+    const fileUri = FileSystem.documentDirectory + fileName;
+
+    await FileSystem.writeAsStringAsync(fileUri, XLSX.write(wb, { type: 'base64' }), { encoding: FileSystem.EncodingType.Base64 });
+
+    await Sharing.shareAsync(fileUri);
+
+    navigation.replace("InicioProfesorPage");
+  };
 
   return (
     <BaseScreen proviene={"notify"} alumno={false} visible={false}>
@@ -83,7 +120,7 @@ const GraficoEncuestaPage = () => {
               styles.boton,
               { backgroundColor: "#1E90FF", marginBottom: 20 },
             ]}
-            onPress={() => navigation.replace("InicioProfesorPage")}
+            onPress={handleGuardar}
           >
             <Text style={styles.botonText}>Guardar</Text>
           </TouchableOpacity>
