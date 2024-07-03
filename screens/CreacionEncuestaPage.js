@@ -94,7 +94,7 @@ const CreacionEncuestaPage = () => {
   };
 
   const handleAceptar = () => {
-    navigation.navigate("InicioProfesorPage");
+    navigation.replace("InicioProfesorPage");
     Alert.alert("Encuesta creada");
   };
 
