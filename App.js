@@ -25,7 +25,7 @@ import PerfilProfesorPage from "./screens/PerfilProfesor";
 import GraficoEncuestaPage from "./screens/GraficoEncuesta";
 import VerAsistenciaPage from "./screens/VerAsistenciaPage";
 import RespuestaPage from "./screens/RespuestaEncuestaPage";
-
+import { LogBox } from "react-native";
 
 const App = () => {
   function MaterialIcon({ name, style }) {
@@ -61,6 +61,7 @@ const App = () => {
     ></Image>
   );
 
+  LogBox.ignoreAllLogs();
   return (
     <>
       <IconRegistry icons={[MaterialIconsPack]} />
@@ -218,10 +219,11 @@ const App = () => {
                   headerRight: headerRight,
                 }}
               ></Stack.Screen>
-              <Stack.Screen 
+              <Stack.Screen
                 name="RespuestaPage"
                 component={RespuestaPage}
-                options={{ presentation: "modal", headerTitle: "Responder" }} />
+                options={{ presentation: "modal", headerTitle: "Responder" }}
+              />
             </Stack.Navigator>
           </NavigationContainer>
         </ScannerProvider>

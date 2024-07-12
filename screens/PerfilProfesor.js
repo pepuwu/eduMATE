@@ -27,11 +27,11 @@ const PerfilProfesorPage = () => {
         ></Image>
         <View style={styles.alumnoInformacionContainer}>
           <Text style={styles.datoEscolarColor}>Nombre</Text>
-          <Text style={styles.infoAlumnoColor}>Juan Remiro</Text>
+          <Text style={styles.infoAlumnoColor}>Jorge Paz</Text>
           <Text style={styles.datoEscolarColor}>Legajo</Text>
           <Text style={styles.infoAlumnoColor}>1155993</Text>
           <Text style={styles.datoEscolarColor}>Email</Text>
-          <Text style={styles.infoAlumnoColor}>jremiro@uade.edu.ar</Text>
+          <Text style={styles.infoAlumnoColor}>jorgepaz@uade.edu.ar</Text>
         </View>
       </View>
     </BaseScreen>

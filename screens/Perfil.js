@@ -31,7 +31,7 @@ const PerfilScreen = () => {
           <Text style={styles.datoEscolarColor}>Legajo</Text>
           <Text style={styles.infoAlumnoColor}>1155993</Text>
           <Text style={styles.datoEscolarColor}>Email</Text>
-          <Text style={styles.infoAlumnoColor}>jremiro@uade.edu.ar</Text>
+          <Text style={styles.infoAlumnoColor}>jesteban@uade.edu.ar</Text>
           <Text style={styles.datoEscolarColor}>
             Total De Materias aprobadas
           </Text>

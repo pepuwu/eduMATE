@@ -102,10 +102,11 @@ const CreacionEncuestaPage = () => {
     <BaseScreen proviene={"encuesta"} alumno={false} visible={false}>
       <View style={{ flex: 1, paddingTop: 100 }}>
         <View>
-          <Text style={styles.headerText}>CREA</Text>
-          <Text style={styles.headerText}>tu encuesta</Text>
+          <Text style={styles.headerText}>
+            {" "}
+            <Text style={{ color: "#6eb5f2" }}>Crea</Text> tu encuesta
+          </Text>
         </View>
-
         <View
           style={{
             justifyContent: "space-between",
@@ -221,6 +222,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "800",
     color: "white",
+    paddingVertical: 10,
   },
   dropdownButtonStyle: {
     width: 190,
